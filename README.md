@@ -1,4 +1,6 @@
-# Next.js + Tailwind CSS Example
+[![Prize-Lottery-green-dark-2.png](https://i.postimg.cc/rFMHnnPW/Prize-Lottery-green-dark-2.png)](https://postimg.cc/jC3vCXKd)
+
+# Prize Protocol V1 app
 
 This example shows how to use [Tailwind CSS](https://tailwindcss.com/) [(v3.0)](https://tailwindcss.com/blog/tailwindcss-v3) with Next.js. It follows the steps outlined in the official [Tailwind docs](https://tailwindcss.com/docs/guides/nextjs).
 
