@@ -1,11 +1,16 @@
 import '../assets/styles/globals.css'
+import 'antd/dist/antd.css'
 import { MoralisProvider } from 'react-moralis'
 import type { AppProps } from 'next/app'
+import { createClient, Provider } from 'urql'
 
 const MORALIS_APP_ID = process.env.NEXT_PUBLIC_MORALIS_APPLICATION_ID
 const MORALIS_SERVER_URL = process.env.NEXT_PUBLIC_MORALIS_SERVER_URL
+const THE_GRAPH_QUERY_URL = process.env.NEXT_PUBLIC_THE_GRAPH_QUERY_URL
 
-console.log(MORALIS_APP_ID)
+const client = createClient({
+  url: THE_GRAPH_QUERY_URL!,
+})
 
 const App = ({ Component, pageProps }: AppProps) => {
   const isServerInfo = MORALIS_APP_ID && MORALIS_SERVER_URL ? true : false
@@ -17,7 +22,9 @@ const App = ({ Component, pageProps }: AppProps) => {
   if (isServerInfo)
     return (
       <MoralisProvider appId={MORALIS_APP_ID} serverUrl={MORALIS_SERVER_URL}>
-        <Component {...pageProps} />
+        <Provider value={client}>
+          <Component {...pageProps} />
+        </Provider>
       </MoralisProvider>
     )
 }

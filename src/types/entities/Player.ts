@@ -1,3 +1,5 @@
+import { Deposit, Lottery, PrizeProtocol, Redeem } from '.'
+
 export interface Player {
   id: string
   address: string

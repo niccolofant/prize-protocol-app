@@ -1,3 +1,5 @@
+import { Lottery, PrizeProtocol } from '.'
+
 export interface Deposit {
   id: string
   timestamp: string
