@@ -1,7 +1,7 @@
 import type { NextPage } from 'next'
 import LotteryWidget from '../components/LotteryWidget/LotteryWidget'
 
-const Home: NextPage = () => {
+const Home = () => {
   return (
     <div>
       <LotteryWidget />
