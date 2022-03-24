@@ -1,7 +1,6 @@
 import Link from 'next/link'
-import { BsTrophy } from 'react-icons/bs'
 import { useMoralis } from 'react-moralis'
-import { AiOutlineUser } from 'react-icons/ai'
+import { UserOutlined, TrophyOutlined } from '@ant-design/icons'
 
 const Navbar = () => {
   const { account } = useMoralis()
@@ -15,7 +14,7 @@ const Navbar = () => {
                 className="flex flex-grow items-center space-x-4 
                 rounded-lg px-3 py-2 font-medium hover:bg-slate-100"
               >
-                <BsTrophy />
+                <TrophyOutlined />
                 <span>Pools</span>
               </button>
             </Link>
@@ -26,7 +25,7 @@ const Navbar = () => {
                 className="flex flex-grow items-center space-x-4 
                 rounded-lg px-3 py-2 font-medium hover:bg-slate-100"
               >
-                <AiOutlineUser />
+                <UserOutlined />
                 <span>Account</span>
               </button>
             </Link>

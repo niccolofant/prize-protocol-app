@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useMoralis, useChain } from 'react-moralis'
 import { Dropdown, notification, Badge } from 'antd'
-import { BiChevronDown } from 'react-icons/bi'
+import { DownOutlined } from '@ant-design/icons'
 import menuItems from './menuItems'
 
 const openNotification = (err: any) => {
@@ -69,7 +69,7 @@ const Chains = () => {
       >
         {selected?.icon}
         <span className="ml-2">{selected?.value}</span>
-        <BiChevronDown />
+        <DownOutlined />
       </button>
     </Dropdown>
   )

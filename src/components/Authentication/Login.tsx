@@ -3,9 +3,8 @@ import { Modal } from 'antd'
 import { useState } from 'react'
 import Address from '../Address'
 import { connectors } from './config'
-import { AiOutlineSelect, AiOutlineCheckCircle } from 'react-icons/ai'
-import { FiCopy } from 'react-icons/fi'
-import Image from 'next/image'
+import { SelectOutlined, CheckCircleOutlined } from '@ant-design/icons'
+import { CopyOutlined } from '@ant-design/icons'
 import { getEllipsisTxt } from '../../utils/formatters'
 import { getExplorer } from '../../utils/networks'
 import { Web3ProviderType } from '../Layout/Header'
@@ -129,12 +128,12 @@ const Login = () => {
             >
               {!isCopied ? (
                 <a className="flex items-center gap-1">
-                  <FiCopy />
+                  <CopyOutlined />
                   Copy Address
                 </a>
               ) : (
                 <span className="flex items-center gap-1 text-[#1990FF]">
-                  <AiOutlineCheckCircle />
+                  <CheckCircleOutlined />
                   Copied!
                 </span>
               )}
@@ -144,7 +143,7 @@ const Login = () => {
                 rel="noreferrer"
                 className="flex items-center gap-1"
               >
-                <AiOutlineSelect />
+                <SelectOutlined />
                 View on Explorer
               </a>
             </div>
