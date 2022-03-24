@@ -2,8 +2,14 @@ import { Button } from 'antd'
 import React, { useCallback, useState } from 'react'
 import { useMoralis, useWeb3Contract } from 'react-moralis'
 import { gql, useQuery } from 'urql'
+import ERC20Balance from '../../components/ERC20Balance'
 import { prizeProtocolABI } from '../../utils/abis/prizeProtocolABI'
 import { usdtABI } from '../../utils/abis/usdtABI'
+import {
+  PROTOCOL_ADDRESS,
+  USDT_ADDRESS,
+  USDT_NAME,
+} from '../../utils/constants'
 import { n4 } from '../../utils/formatters'
 import { getWinningOdds } from '../../utils/functions'
 
@@ -37,12 +43,12 @@ const query = gql`
 `
 
 const deposit = () => {
-  const [amountToDeposit, setAmountToDeposit] = useState<string>('0')
+  const [amountToDeposit, setAmountToDeposit] = useState<string>('')
   const [isApproveLoading, setIsApproveLoading] = useState<boolean>(false)
   const [isDepositLoading, setIsDepositLoading] = useState<boolean>(false)
   const [winningOdds, setWinningOdds] = useState<string>('-')
 
-  const [{ fetching, data }] = useQuery({ query })
+  const [{ data }] = useQuery({ query })
   const { Moralis } = useMoralis()
 
   const protocolInfo = data?.prizeProtocols[0]
@@ -51,10 +57,10 @@ const deposit = () => {
   const { error: approveDepositError, runContractFunction: approveDeposit } =
     useWeb3Contract({
       abi: usdtABI,
-      contractAddress: protocolInfo?.token,
+      contractAddress: USDT_ADDRESS,
       functionName: 'approve',
       params: {
-        _spender: protocolInfo?.address,
+        _spender: PROTOCOL_ADDRESS,
         amount: amountToDeposit ? Moralis.Units.ETH(amountToDeposit) : null,
       },
     })
@@ -62,7 +68,7 @@ const deposit = () => {
   const { error: depositError, runContractFunction: deposit } = useWeb3Contract(
     {
       abi: prizeProtocolABI,
-      contractAddress: protocolInfo?.address,
+      contractAddress: PROTOCOL_ADDRESS,
       functionName: 'deposit',
       params: {
         _amount: amountToDeposit ? Moralis.Units.ETH(amountToDeposit) : null,
@@ -100,9 +106,11 @@ const deposit = () => {
 
   return (
     <div>
+      <ERC20Balance address={USDT_ADDRESS} name={USDT_NAME} />
       <input
         className="border"
         type="number"
+        value={amountToDeposit}
         placeholder="Enter amount"
         onChange={handleFormChange}
       />
