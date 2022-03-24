@@ -40,7 +40,7 @@ export const getCompoundApy = (supplyRate: string): string => {
  * @param amountToDeposit The amount to deposit
  * @param totalAmountDeposited The total amount already deposited
  * @param precision The precision of the returned odds
- * @returns The winning odds with a specified precisione
+ * @returns The winning odds with a specified precision
  */
 export const getWinningOdds = (
   amountToDeposit: string,
