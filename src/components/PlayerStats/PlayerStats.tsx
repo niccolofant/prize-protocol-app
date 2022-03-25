@@ -1,28 +1,39 @@
-import { LoadingOutlined, RightOutlined } from '@ant-design/icons'
+import { LoadingOutlined } from '@ant-design/icons'
+import { notification } from 'antd'
 import Link from 'next/link'
 import React, { useState } from 'react'
 import { useMoralis, useWeb3Contract } from 'react-moralis'
 import { gql, useQuery } from 'urql'
 import { prizeProtocolABI } from '../../utils/abis/prizeProtocolABI'
 import { PROTOCOL_ADDRESS } from '../../utils/constants'
-import Address from '../Address'
+import {
+  PlayerCardBodyWrapper,
+  PlayerCardButton,
+  PlayerCardHeaderWrapper,
+  PlayerCardLink,
+  PlayerCardText,
+  PlayerCardTitle,
+  PlayerStatsCardWrapper,
+} from './PlayerStats.style'
 
-interface PlayerInfo {
-  players: {
+const openNotification = (err: Error) => {
+  notification['error']({
+    message: err.message,
+    description: `We weren't able to process the transaction - Reason: ${err.message}`,
+    duration: 5,
+  })
+}
+
+export interface PlayerInfo {
+  player: {
     balance: string
-    lottery: {
-      id: string
-    }
-  }[]
+  }
 }
 
 const playerInfoQuery = gql`
   query playerInfo($id: String) {
-    players(id: $id) {
+    player(id: $id) {
       balance
-      lottery {
-        id
-      }
     }
   }
 `
@@ -35,57 +46,51 @@ const PlayerStats = () => {
     variables: { id: account },
   })
 
-  const handleRedeemClick = async () => {
-    const { error: redeemError, runContractFunction: redeem } = useWeb3Contract(
-      {
-        abi: prizeProtocolABI,
-        contractAddress: PROTOCOL_ADDRESS,
-        functionName: 'redeem',
-        params: {
-          _tokenAmount: data ? data?.players[0]?.balance : null,
-        },
-      }
-    )
+  const { runContractFunction: redeem } = useWeb3Contract({
+    abi: prizeProtocolABI,
+    contractAddress: PROTOCOL_ADDRESS,
+    functionName: 'redeem',
+    params: {
+      _tokenAmount: data ? data.player.balance : null,
+    },
+  })
 
+  const handleRedeemClick = async () => {
     setIsRedeemLoading(true)
 
     await redeem({
       onSuccess: async (tx: any) => {
         await tx.wait(1)
-
+        setIsRedeemLoading(false)
+      },
+      onError: (err) => {
+        openNotification(err)
         setIsRedeemLoading(false)
       },
     })
   }
 
   return (
-    <div className="space-y-2 rounded-xl bg-gradient-to-r from-green-300 to-sky-400 p-10 shadow-xl">
-      <div className="flex justify-between">
-        <h1 className="text-xl font-medium text-white">Dashboard</h1>
-        <Link href="/">
-          <p className="text-md flex cursor-pointer items-center font-medium text-white">
-            Go to player's profile <RightOutlined />
-          </p>
+    <PlayerStatsCardWrapper>
+      <PlayerCardHeaderWrapper>
+        <PlayerCardTitle>Dashboard</PlayerCardTitle>
+        <Link href={`/players/${account}`}>
+          <PlayerCardLink>Go to player's profile</PlayerCardLink>
         </Link>
-      </div>
-      <div className="flex justify-between">
+      </PlayerCardHeaderWrapper>
+      <PlayerCardBodyWrapper>
         <div>
           <h3 className="text-white">Redeemable balance</h3>
-          <p className="text-3xl font-medium text-white">
-            {data && data.players[0]
-              ? Moralis.Units.FromWei(data.players[0].balance)
-              : '0'}
-            <span> USDT</span>
-          </p>
+          <PlayerCardText>
+            {data ? Moralis.Units.FromWei(data.player.balance) : '0'}
+            <span className="text-xl"> USDT </span>🎉
+          </PlayerCardText>
         </div>
-        <button
-          className="rounded-lg bg-white py-2 px-10 font-semibold text-slate-700"
-          onClick={handleRedeemClick}
-        >
+        <PlayerCardButton onClick={handleRedeemClick}>
           {isRedeemLoading ? <LoadingOutlined /> : 'Redeem Balance'}
-        </button>
-      </div>
-    </div>
+        </PlayerCardButton>
+      </PlayerCardBodyWrapper>
+    </PlayerStatsCardWrapper>
   )
 }
 
