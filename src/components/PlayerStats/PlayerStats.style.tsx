@@ -5,7 +5,7 @@ export const PlayerStatsCardWrapper = tw.div`
 `
 
 export const PlayerCardHeaderWrapper = tw.div`
-    flex justify-between
+    flex justify-between items-center
 `
 
 export const PlayerCardTitle = tw.h1`

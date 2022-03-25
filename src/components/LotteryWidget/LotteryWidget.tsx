@@ -1,18 +1,8 @@
-import {
-  Avatar,
-  Badge,
-  Card,
-  Divider,
-  Skeleton,
-  Statistic,
-  Typography,
-} from 'antd'
+import { Avatar, Badge, Divider, Skeleton, Statistic, Typography } from 'antd'
 import { gql, useQuery } from 'urql'
 import { getDrawingDate } from '../../utils/functions'
-import { useMoralis, useWeb3Contract, useChain } from 'react-moralis'
-import { n4 } from '../../utils/formatters'
+import { useMoralis } from 'react-moralis'
 import { Compound, CUSDT, USDT } from '../Images/Images'
-import { prizeProtocolABI } from '../../utils/abis/prizeProtocolABI'
 import Link from 'next/link'
 
 const query = gql`
@@ -46,28 +36,9 @@ const query = gql`
 const LotteryWidget = () => {
   const { Moralis } = useMoralis()
   const [{ fetching, data }] = useQuery({ query })
-  const { chainId } = useChain()
 
   const protocolInfo = data?.prizeProtocols[0]
   const lotteryInfo = protocolInfo?.lotteries[0]
-
-  const {
-    data: prizePool,
-    error,
-    runContractFunction,
-    isFetching,
-    isLoading,
-  } = useWeb3Contract({
-    abi: prizeProtocolABI,
-    contractAddress: protocolInfo?.address,
-    functionName: 'prizePool',
-    params: {},
-  })
-
-  const handleSuccess = async (tx: any) => {
-    await tx.wait(1)
-    console.log(tx)
-  }
 
   if (fetching) return <Skeleton />
   return (
@@ -92,7 +63,7 @@ const LotteryWidget = () => {
           <Typography className="text-slate-500">Prize Pool</Typography>
           <Typography className="text-5xl font-semibold text-slate-800">
             <span className="text-xl font-normal text-slate-500">$ </span>
-            {n4.format(parseInt(Moralis.Units.FromWei(lotteryInfo.prizePool)))}
+            {Moralis.Units.FromWei(lotteryInfo.prizePool)}
           </Typography>
         </div>
         <div className="flex flex-col items-center">
@@ -119,16 +90,6 @@ const LotteryWidget = () => {
           <button className="border px-10">Deposit</button>
         </Link>
       </div>
-      <button
-        onClick={async () =>
-          await runContractFunction({
-            onSuccess: handleSuccess,
-          })
-        }
-      >
-        AAAAA
-      </button>
-      {prizePool && JSON.stringify(prizePool)}
     </div>
   )
 }
