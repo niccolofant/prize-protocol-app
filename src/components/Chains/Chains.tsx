@@ -1,10 +1,9 @@
 import { useEffect, useState } from 'react'
 import { useMoralis, useChain } from 'react-moralis'
 import { Dropdown, notification, Badge } from 'antd'
-import { DownOutlined } from '@ant-design/icons'
 import menuItems from './menuItems'
 
-const openNotification = (err: any) => {
+const openNotification = (err: Error) => {
   notification['error']({
     message: err.message,
     description: `We weren't able to process the transaction - Reason: ${err.message}`,
@@ -25,7 +24,7 @@ const Chains = () => {
   const { Moralis } = useMoralis()
   const [selected, setSelected] = useState<MenuItem>()
 
-  useEffect((): void => {
+  useEffect(() => {
     if (!chainId) return
     const newSelected = menuItems.find((item) => item.key === chainId)
     setSelected(newSelected)
@@ -38,7 +37,7 @@ const Chains = () => {
 
   const menu = (
     <div
-      className="flex flex-col rounded-xl border border-slate-200 bg-white
+      className="flex flex-col rounded-lg border border-slate-200 bg-white
       p-2 font-gilroy shadow-lg dark:border-slate-700 dark:bg-[#1d1d1d]"
     >
       {menuItems.map(({ key, icon, value }) => (
@@ -64,12 +63,11 @@ const Chains = () => {
   return (
     <Dropdown overlay={menu} trigger={['click']}>
       <button
-        className="flex items-center space-x-2 rounded-xl border bg-white px-2
-          py-1.5 text-sm font-medium text-slate-800"
+        className="flex items-center space-x-2 rounded-lg border bg-white py-1.5 pl-2
+          pr-5 text-sm font-medium text-slate-800"
       >
         {selected?.icon}
         <span className="ml-2">{selected?.value}</span>
-        <DownOutlined />
       </button>
     </Dropdown>
   )
