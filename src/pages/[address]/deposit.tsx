@@ -3,6 +3,7 @@ import React, { useCallback, useState } from 'react'
 import { useMoralis, useWeb3Contract } from 'react-moralis'
 import { gql, useQuery } from 'urql'
 import ERC20Balance from '../../components/ERC20Balance'
+import PlayerStats from '../../components/PlayerStats/PlayerStats'
 import { prizeProtocolABI } from '../../utils/abis/prizeProtocolABI'
 import { usdtABI } from '../../utils/abis/usdtABI'
 import {
@@ -121,6 +122,7 @@ const deposit = () => {
         Deposit
       </Button>
       <div>winning odds: {winningOdds}%</div>
+      <PlayerStats />
     </div>
   )
 }

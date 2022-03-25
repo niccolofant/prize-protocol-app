@@ -4,6 +4,7 @@ import { MoralisProvider } from 'react-moralis'
 import type { AppProps } from 'next/app'
 import { createClient, Provider } from 'urql'
 import Layout from '../components/Layout/Layout'
+import { GlobalStyles } from 'twin.macro'
 
 const MORALIS_APP_ID = process.env.NEXT_PUBLIC_MORALIS_APPLICATION_ID
 const MORALIS_SERVER_URL = process.env.NEXT_PUBLIC_MORALIS_SERVER_URL
@@ -22,13 +23,16 @@ const App = ({ Component, pageProps }: AppProps) => {
     )
   if (isServerInfo)
     return (
-      <MoralisProvider appId={MORALIS_APP_ID} serverUrl={MORALIS_SERVER_URL}>
-        <Provider value={client}>
-          <Layout>
-            <Component {...pageProps} />
-          </Layout>
-        </Provider>
-      </MoralisProvider>
+      <>
+        <GlobalStyles />
+        <MoralisProvider appId={MORALIS_APP_ID} serverUrl={MORALIS_SERVER_URL}>
+          <Provider value={client}>
+            <Layout>
+              <Component {...pageProps} />
+            </Layout>
+          </Provider>
+        </MoralisProvider>
+      </>
     )
 }
 

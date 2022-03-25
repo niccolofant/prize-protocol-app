@@ -1,9 +1,10 @@
-import type { NextPage } from 'next'
 import LotteryWidget from '../components/LotteryWidget/LotteryWidget'
+import PlayerStats from '../components/PlayerStats/PlayerStats'
 
 const Home = () => {
   return (
-    <div>
+    <div className="flex-col space-y-10">
+      <PlayerStats />
       <LotteryWidget />
     </div>
   )

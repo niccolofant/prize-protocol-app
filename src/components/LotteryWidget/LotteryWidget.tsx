@@ -71,7 +71,7 @@ const LotteryWidget = () => {
 
   if (fetching) return <Skeleton />
   return (
-    <Card className="rounded-xl">
+    <div className="rounded-xl border p-10 shadow-xl">
       <div className="flex items-center justify-center">
         <div className="flex items-center space-x-4">
           <Avatar.Group>
@@ -129,7 +129,7 @@ const LotteryWidget = () => {
         AAAAA
       </button>
       {prizePool && JSON.stringify(prizePool)}
-    </Card>
+    </div>
   )
 }
 

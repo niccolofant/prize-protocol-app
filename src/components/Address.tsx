@@ -7,6 +7,7 @@ export interface AddressProps {
   address?: string
   size?: number
   copyable?: boolean
+  color?: string
 }
 
 const Address = (props: AddressProps) => {
@@ -47,7 +48,11 @@ const Address = (props: AddressProps) => {
 
   return (
     <div className="flex items-center">
-      <p className="text-lg font-medium text-slate-800">
+      <p
+        className={`text-lg font-medium ${
+          props.color ? props.color : 'text-slate-800'
+        }`}
+      >
         {props.size ? getEllipsisTxt(address, props.size) : address}
       </p>
       {props.copyable && (isClicked ? <Check /> : <Copy />)}

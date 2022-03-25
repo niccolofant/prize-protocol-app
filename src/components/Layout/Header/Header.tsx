@@ -1,8 +1,9 @@
 import { NextPage } from 'next'
 import { useEffect } from 'react'
 import { useMoralis } from 'react-moralis'
-import Login from '../Authentication/Login'
-import Chains from '../Chains/Chains'
+import Login from '../../Authentication/Login'
+import Chains from '../../Chains/Chains'
+import { HeaderWrapper } from './Header.style'
 
 export type Web3ProviderType =
   | 'metamask'
@@ -25,10 +26,10 @@ const Header: NextPage = () => {
   }, [isAuthenticated, isWeb3Enabled])
 
   return (
-    <header className="flex items-center justify-end space-x-4 bg-slate-50 px-16 py-8">
+    <HeaderWrapper>
       {isAuthenticated && <Chains />}
       <Login />
-    </header>
+    </HeaderWrapper>
   )
 }
 

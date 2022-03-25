@@ -7,7 +7,7 @@ import { SelectOutlined, CheckCircleOutlined } from '@ant-design/icons'
 import { CopyOutlined } from '@ant-design/icons'
 import { getEllipsisTxt } from '../../utils/formatters'
 import { getExplorer } from '../../utils/networks'
-import { Web3ProviderType } from '../Layout/Header'
+import { Web3ProviderType } from '../Layout/Header/Header'
 
 const Login = () => {
   const [isModalVisible, setIsModalVisible] = useState(false)
