@@ -1,4 +1,4 @@
-[![Prize-Lottery-green-dark-2.png](https://i.postimg.cc/rFMHnnPW/Prize-Lottery-green-dark-2.png)](https://postimg.cc/jC3vCXKd)
+[![logo-text-black-transparent.png](https://i.postimg.cc/1Xg8kTVK/logo-text-black-transparent.png)](https://postimg.cc/tnjRPB51)
 
 # Prize Protocol App
 
