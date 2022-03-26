@@ -5,7 +5,7 @@ import { UserOutlined, TrophyOutlined } from '@ant-design/icons'
 const Navbar = () => {
   const { account } = useMoralis()
   return (
-    <div className="hidden flex-col bg-slate-50 p-5 py-6 text-slate-500 lg:inline-flex xl:w-48">
+    <div className="hidden flex-col border-r p-10 py-6 text-slate-500 lg:inline-flex xl:w-48">
       <nav className="my-6">
         <ul className="space-y-2">
           <li className="flex">

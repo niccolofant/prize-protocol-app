@@ -6,6 +6,7 @@ const Home = () => {
     <div className="flex-col space-y-10">
       <PlayerStats />
       <LotteryWidget />
+      <LotteryWidget />
     </div>
   )
 }

@@ -1,4 +1,5 @@
 import { LoadingOutlined } from '@ant-design/icons'
+import Link from 'next/link'
 import { FunctionComponent } from 'react'
 
 export interface TransactionPendingProps {
@@ -21,20 +22,23 @@ const TransactionPending: FunctionComponent<TransactionPendingProps> = ({
             </div>
             {/*body*/}
             <div className="relative space-y-5 p-6 text-center ">
-              <div className="text-5xl">
+              <div className="text-5xl text-prize-blue">
                 <LoadingOutlined />
               </div>
-              <p>Transaction broadcast</p>
+              <p className="text-prize-light-gray">Transaction broadcast</p>
             </div>
             {/*footer*/}
             <div className="flex items-center justify-end rounded-b p-6">
-              <button
-                className="flex flex-grow justify-center rounded bg-emerald-500 px-6 py-3 text-sm 
-                text-white shadow outline-none transition-all duration-150 ease-linear hover:shadow-lg focus:outline-none active:bg-emerald-600"
-                type="button"
-              >
-                View on Etherscan
-              </button>
+              <Link href={`https://rinkeby.etherscan.io/tx/${txHash}`}>
+                <a
+                  className="flex flex-grow justify-center rounded bg-prize-blue px-6 
+                py-3 text-sm font-medium text-white shadow transition-all duration-150 ease-linear hover:text-white hover:shadow-lg"
+                  type="button"
+                  target="_blank"
+                >
+                  View on Etherscan
+                </a>
+              </Link>
             </div>
           </div>
         </div>

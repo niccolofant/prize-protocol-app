@@ -1,7 +1,7 @@
 import tw from 'twin.macro'
 
 export const OuterLayoutWrapper = tw.div`
-    flex h-screen font-gilroy text-base tracking-wide
+    flex h-screen text-base tracking-wide bg-white font-gilroy
 `
 
 export const OuterHeaderWrapper = tw.div`

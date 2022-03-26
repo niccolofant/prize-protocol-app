@@ -1,9 +1,11 @@
-import { Button } from 'antd'
+import { Avatar, Button, Typography } from 'antd'
 import React, { useCallback, useState } from 'react'
 import { useMoralis, useWeb3Contract } from 'react-moralis'
 import { gql, useQuery } from 'urql'
 import ERC20Balance from '../../components/ERC20Balance'
+import { CUSDT, USDT } from '../../components/Images/Images'
 import PlayerStats from '../../components/PlayerStats/PlayerStats'
+import PrizeStats from '../../components/PrizeStats/PrizeStats'
 import { prizeProtocolABI } from '../../utils/abis/prizeProtocolABI'
 import { usdtABI } from '../../utils/abis/usdtABI'
 import {
@@ -11,11 +13,10 @@ import {
   USDT_ADDRESS,
   USDT_NAME,
 } from '../../utils/constants'
-import { n4 } from '../../utils/formatters'
 import { getWinningOdds } from '../../utils/functions'
 
-const query = gql`
-  query getLastLottery {
+const lotteryInfoQuery = gql`
+  query {
     prizeProtocols(first: 1) {
       name
       address
@@ -44,12 +45,12 @@ const query = gql`
 `
 
 const deposit = () => {
-  const [amountToDeposit, setAmountToDeposit] = useState<string>('')
-  const [isApproveLoading, setIsApproveLoading] = useState<boolean>(false)
-  const [isDepositLoading, setIsDepositLoading] = useState<boolean>(false)
-  const [winningOdds, setWinningOdds] = useState<string>('-')
+  const [amountToDeposit, setAmountToDeposit] = useState('')
+  const [isApproveLoading, setIsApproveLoading] = useState(false)
+  const [isDepositLoading, setIsDepositLoading] = useState(false)
+  const [winningOdds, setWinningOdds] = useState('-')
 
-  const [{ data }] = useQuery({ query })
+  const [{ data }] = useQuery({ query: lotteryInfoQuery })
   const { Moralis } = useMoralis()
 
   const protocolInfo = data?.prizeProtocols[0]
@@ -106,24 +107,42 @@ const deposit = () => {
   }
 
   return (
-    <div>
-      <ERC20Balance address={USDT_ADDRESS} name={USDT_NAME} />
-      <input
-        className="border"
-        type="number"
-        value={amountToDeposit}
-        placeholder="Enter amount"
-        onChange={handleFormChange}
-      />
-      <Button
-        disabled={isApproveLoading || isDepositLoading}
-        onClick={handleDepositClick}
-      >
-        Deposit
-      </Button>
-      <div>winning odds: {winningOdds}%</div>
-      <PlayerStats />
-    </div>
+    <>
+      {data && (
+        <div>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-4">
+              <Avatar.Group>
+                <Avatar src={<CUSDT />} />
+                <Avatar src={<USDT />} />
+              </Avatar.Group>
+              <h1 className="text-4xl font-semibold text-prize-dark-gray">
+                {protocolInfo.name}
+              </h1>
+            </div>
+            <button className="rounded-lg bg-prize-red px-16 py-3 font-semibold text-white shadow-xl">
+              Deposit
+            </button>
+          </div>
+          <PrizeStats />
+          <ERC20Balance address={USDT_ADDRESS} name={USDT_NAME} />
+          <input
+            className="border"
+            type="number"
+            value={amountToDeposit}
+            placeholder="Enter amount"
+            onChange={handleFormChange}
+          />
+          <Button
+            disabled={isApproveLoading || isDepositLoading}
+            onClick={handleDepositClick}
+          >
+            Deposit
+          </Button>
+          <div>winning odds: {winningOdds}%</div>
+        </div>
+      )}
+    </>
   )
 }
 
