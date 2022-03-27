@@ -60,12 +60,12 @@ export const ShowCounter: FunctionComponent<ShowCounterProps> = ({
 
 export const ExpiredNotice: FunctionComponent = () => {
   return (
-    <div>
+    <div className="text-center">
       <h3 className="text-2xl font-medium text-prize-dark-gray">
         Awarding winner! 🎉
       </h3>
-      <p className="text-base text-prize-light-gray">
-        Next lottery will start soon
+      <p className="text-sm text-prize-light-gray">
+        Check your profile to see if you've won or not!
       </p>
     </div>
   )

@@ -15,12 +15,12 @@ const SuccessView: FunctionComponent<SuccessViewProps> = ({ handleClose }) => {
           <h1 className="text-2xl font-semibold text-prize-dark-gray">
             Deposit Successful!
           </h1>
-          <h3 className="text-lg text-prize-light-gray">
+          <h3 className="text-prize-light-gray">
             You are now eligible to win the prize pool!
           </h3>
         </div>
         <button
-          className="rounded-lg bg-prize-blue px-16 py-3 font-semibold text-white shadow-xl"
+          className="rounded-lg bg-prize-red px-16 py-3 font-semibold text-white shadow-xl"
           onClick={handleClose}
         >
           Ok

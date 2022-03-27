@@ -85,7 +85,7 @@ const LotteryWidget = () => {
 
       <div className="text-center">
         <Link href={`/${protocolInfo.address}/deposit`}>
-          <button className="rounded-lg bg-prize-red px-16 py-3 font-semibold text-white shadow-xl">
+          <button className="rounded-lg bg-prize-red px-40 py-3 font-semibold text-white shadow-xl">
             Deposit
           </button>
         </Link>

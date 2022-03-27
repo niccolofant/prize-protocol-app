@@ -122,7 +122,7 @@ const ApproveView: FunctionComponent<ApproveViewProps> = ({
         </div>
 
         <button
-          className="flex-auto rounded-lg bg-prize-blue px-16 py-3 font-semibold text-white shadow-xl"
+          className="flex-auto rounded-lg bg-prize-red px-16 py-3 font-semibold text-white shadow-xl"
           onClick={handleApproveClick}
           disabled={isApproveLoading || !isAmountValid}
         >
