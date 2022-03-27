@@ -25,7 +25,10 @@ const TransactionPending: FunctionComponent<TransactionPendingProps> = ({
               <div className="text-5xl text-prize-blue">
                 <LoadingOutlined />
               </div>
-              <p className="text-prize-light-gray">Transaction broadcast</p>
+              <p className="text-prize-light-gray">
+                Your transaction is being recorded to the blockchain and it will
+                be reflected here shortly.
+              </p>
             </div>
             {/*footer*/}
             <div className="flex items-center justify-end rounded-b p-6">
@@ -43,7 +46,7 @@ const TransactionPending: FunctionComponent<TransactionPendingProps> = ({
           </div>
         </div>
       </div>
-      <div className="fixed inset-0 z-40 bg-black opacity-25"></div>
+      <div className="fixed inset-0 z-40 bg-black opacity-50"></div>
     </div>
   )
 }

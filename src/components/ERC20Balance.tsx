@@ -1,6 +1,8 @@
 import { useERC20Balances, useMoralis } from 'react-moralis'
-import { LoadingOutlined, WalletOutlined } from '@ant-design/icons'
+import { LoadingOutlined } from '@ant-design/icons'
+import { IoIosWallet } from 'react-icons/io'
 import { notification } from 'antd'
+import { n4 } from '../utils/formatters'
 
 export interface ERC20BalanceProps {
   address: string
@@ -21,16 +23,21 @@ const ERC20Balance = ({ address, name }: ERC20BalanceProps) => {
   return (
     <div>
       {erc20BalancesError && openErrorNotification(erc20BalancesError)}
-      <div className="flex items-center space-x-1">
-        <WalletOutlined />
-        <div>
+      <div className="flex items-center space-x-1 text-prize-dark-gray">
+        <IoIosWallet />
+        <p className="text-lg font-medium">
           {!erc20Balances && !erc20BalancesError && <LoadingOutlined />}
           {erc20Balances &&
             erc20Balances
               .filter((erc20Balance) => erc20Balance.token_address === address)
-              .map((erc20) => Moralis.Units.FromWei(erc20.balance))}
-          <span> {name}</span>
-        </div>
+              .map((erc20) =>
+                n4.format(parseFloat(Moralis.Units.FromWei(erc20.balance)))
+              )}
+          <span className="text-base font-normal text-prize-light-gray">
+            {' '}
+            {name}
+          </span>
+        </p>
       </div>
     </div>
   )

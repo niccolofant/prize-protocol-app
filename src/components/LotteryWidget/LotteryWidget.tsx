@@ -4,9 +4,11 @@ import { getDrawingDate } from '../../utils/functions'
 import { useMoralis } from 'react-moralis'
 import { Compound, CUSDT, USDT } from '../Images/Images'
 import Link from 'next/link'
+import { n4 } from '../../utils/formatters'
+import Countdown from '../Countdown/Countdown'
 
 const query = gql`
-  query getLastLottery {
+  query {
     prizeProtocols(first: 1) {
       name
       address
@@ -49,9 +51,9 @@ const LotteryWidget = () => {
             <Avatar src={<CUSDT />} />
             <Avatar src={<USDT />} />
           </Avatar.Group>
-          <Typography className="text-xl font-semibold text-slate-700">
+          <p className="text-xl font-semibold text-prize-dark-gray">
             Lottery #{lotteryInfo.id}
-          </Typography>
+          </p>
           <Badge status="processing" color="green" />
         </div>
       </div>
@@ -60,22 +62,13 @@ const LotteryWidget = () => {
 
       <div className="flex items-center justify-evenly space-x-10">
         <div className="flex flex-col items-center space-y-2">
-          <Typography className="text-slate-500">Prize Pool</Typography>
-          <Typography className="text-5xl font-semibold text-slate-800">
+          <p className="text-prize-light-gray">Prize Pool</p>
+          <p className="text-5xl font-semibold text-slate-800">
             <span className="text-xl font-normal text-slate-500">$ </span>
-            {Moralis.Units.FromWei(lotteryInfo.prizePool)}
-          </Typography>
-        </div>
-        <div className="flex flex-col items-center">
-          <Typography className="text-slate-500">Time Left</Typography>
-          <Statistic.Countdown
-            className="font-medium"
-            value={getDrawingDate(
-              lotteryInfo.startTimestamp,
-              protocolInfo.drawingPeriod
-            ).toISOString()}
-            format="DD HH mm ss"
-          />
+            {n4.format(
+              parseFloat(Moralis.Units.FromWei(lotteryInfo.prizePool))
+            )}
+          </p>
         </div>
       </div>
 
@@ -83,7 +76,7 @@ const LotteryWidget = () => {
 
       <div className="flex items-center justify-evenly">
         <div className="text-center">
-          <Typography className="text-slate-500">Yield protocol</Typography>
+          <p className="text-prize-light-gray">Yield protocol</p>
           <Avatar src={<Compound />} />
         </div>
         <Link href={`/${protocolInfo.address}/deposit`}>
