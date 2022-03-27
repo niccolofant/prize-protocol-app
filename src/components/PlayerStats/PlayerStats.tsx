@@ -6,7 +6,6 @@ import { useMoralis, useWeb3Contract } from 'react-moralis'
 import { gql, useQuery } from 'urql'
 import { prizeProtocolABI } from '../../utils/abis/prizeProtocolABI'
 import { PROTOCOL_ADDRESS } from '../../utils/constants'
-import Logo from '../Logo/Logo'
 import TransactionPending from '../TransactionPending/TransactionPending'
 import {
   PlayerCardBodyWrapper,
