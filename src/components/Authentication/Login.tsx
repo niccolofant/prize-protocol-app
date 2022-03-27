@@ -3,10 +3,9 @@ import { Modal } from 'antd'
 import { useState } from 'react'
 import Address from '../Address'
 import { connectors } from './config'
-import { SelectOutlined, CheckCircleOutlined } from '@ant-design/icons'
+import { CheckCircleOutlined } from '@ant-design/icons'
 import { CopyOutlined } from '@ant-design/icons'
 import { getEllipsisTxt } from '../../utils/formatters'
-import { getExplorer } from '../../utils/networks'
 import { Web3ProviderType } from '../Layout/Header/Header'
 
 const Login = () => {
@@ -137,15 +136,6 @@ const Login = () => {
                   Copied!
                 </span>
               )}
-              <a
-                href={`${getExplorer(chainId)}/address/${account}`}
-                target="_blank"
-                rel="noreferrer"
-                className="flex items-center gap-1"
-              >
-                <SelectOutlined />
-                View on Explorer
-              </a>
             </div>
           </div>
         </div>
