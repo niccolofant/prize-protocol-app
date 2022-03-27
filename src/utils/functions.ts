@@ -1,3 +1,8 @@
+import Moralis from 'moralis'
+import Web3 from 'web3'
+import { cUsdtABI } from './abis/cUsdtABI'
+import { CUSDT_ADDRESS } from './constants'
+
 /**
  * Returns the date of the lottery end
  *
@@ -18,14 +23,19 @@ export const getDrawingDate = (
  * @param supplyRate The supply rate of a certain cToken
  * @returns The Compound APY
  */
-export const getCompoundApy = (supplyRate: string): string => {
+export const getCompoundApy = async (): Promise<string> => {
   const ethMantissa = 1e18
   const rinkebyBlocksPerDay = 5760 // ~15 secs per block
   const daysPerYear = 365
 
+  await Moralis.enableWeb3()
+  const web3Js = new Web3(Moralis.provider as any)
+
+  const cToken = new web3Js.eth.Contract(cUsdtABI as any, CUSDT_ADDRESS)
+  const supplyRatePerBlock = await cToken.methods.supplyRatePerBlock().call()
   const supplyApy =
     (Math.pow(
-      (parseInt(supplyRate as string) / ethMantissa) * rinkebyBlocksPerDay + 1,
+      (supplyRatePerBlock / ethMantissa) * rinkebyBlocksPerDay + 1,
       daysPerYear
     ) -
       1) *
