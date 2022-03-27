@@ -51,7 +51,6 @@ const DepositStats: FunctionComponent = () => {
           USDT
         </h3>
       </div>
-
       <ResponsiveContainer width="99%" aspect={3}>
         <LineChart data={deposits}>
           <defs>
