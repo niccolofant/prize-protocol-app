@@ -1,12 +1,15 @@
+import Layout from '../components/Layout/Layout'
 import LotteryWidget from '../components/LotteryWidget/LotteryWidget'
 import PlayerStats from '../components/PlayerStats/PlayerStats'
 
 const Home = () => {
   return (
-    <div className="flex-col space-y-10">
-      <PlayerStats />
-      <LotteryWidget />
-    </div>
+    <Layout>
+      <div className="flex-col space-y-10">
+        <PlayerStats />
+        <LotteryWidget />
+      </div>
+    </Layout>
   )
 }
 
