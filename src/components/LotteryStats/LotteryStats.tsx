@@ -61,13 +61,15 @@ const LotteryStats: FunctionComponent = () => {
         <div className="flex justify-between">
           <h3 className="text-prize-light-gray">Prize-eligible deposits</h3>
           <p className="text-lg font-medium text-prize-dark-gray">
-            {Moralis.Units.FromWei(lotteryInfo.amountDeposited)} USDT
+            {Moralis.Units.FromWei(lotteryInfo.amountDeposited)}
+            <span className="font-normal text-prize-light-gray"> USDT</span>
           </p>
         </div>
         <div className="flex justify-between">
           <h3 className="text-prize-light-gray">Reserve</h3>
           <p className="text-lg font-medium text-prize-dark-gray">
-            {Moralis.Units.FromWei(lotteryInfo.reserve)} USDT
+            {Moralis.Units.FromWei(lotteryInfo.reserve)}
+            <span className="font-normal text-prize-light-gray"> USDT</span>
           </p>
         </div>
         <div className="flex justify-between">
@@ -78,13 +80,15 @@ const LotteryStats: FunctionComponent = () => {
                 parseInt(lotteryInfo.reserve) +
                 parseInt(lotteryInfo.amountDeposited)
               ).toString()
-            )}{' '}
-            USDT
+            )}
+            <span className="font-normal text-prize-light-gray"> USDT</span>
           </p>
         </div>
         <div className="flex justify-between">
           <h3 className="text-prize-light-gray">Reserve Rate</h3>
-          <p className="text-lg font-medium text-prize-dark-gray">0%</p>
+          <p className="text-lg font-medium text-prize-dark-gray">
+            0<span className="font-normal text-prize-light-gray">%</span>
+          </p>
         </div>
         <div className="flex justify-between">
           <h3 className="text-prize-light-gray">Token</h3>
@@ -108,7 +112,8 @@ const LotteryStats: FunctionComponent = () => {
         <div className="flex justify-between">
           <h3 className="text-prize-light-gray">Effective APY </h3>
           <p className="text-lg font-medium text-prize-dark-gray">
-            {n4.format(parseFloat(compoundApy))}%
+            {n4.format(parseFloat(compoundApy))}
+            <span className="font-normal text-prize-light-gray">%</span>
           </p>
         </div>
       </div>

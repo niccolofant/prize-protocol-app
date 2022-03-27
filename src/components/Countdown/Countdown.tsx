@@ -1,8 +1,9 @@
-import { FunctionComponent } from 'react'
+import { FunctionComponent, useEffect } from 'react'
 import { useCountdown } from '../../hooks/useCountdown'
 
 export interface CountdownProps {
-  targetTimestamp: Date
+  targetDate: Date
+  onTargetReached?: () => void
 }
 
 export interface DateTimeDisplayProps {
@@ -19,9 +20,15 @@ export interface ShowCounterProps {
 }
 
 const Countdown: FunctionComponent<CountdownProps> = ({
-  targetTimestamp: targetDate,
+  targetDate,
+  onTargetReached,
 }) => {
   const [days, hours, minutes, seconds] = useCountdown(targetDate)
+
+  useEffect(() => {
+    if (days + hours + minutes + seconds <= 0 && onTargetReached)
+      onTargetReached()
+  }, [days, hours, minutes, seconds])
 
   if (days + hours + minutes + seconds <= 0) {
     return <ExpiredNotice />

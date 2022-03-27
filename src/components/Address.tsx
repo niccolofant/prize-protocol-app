@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { FunctionComponent, useEffect, useState } from 'react'
 import { useMoralis } from 'react-moralis'
 import { Skeleton } from 'antd'
 import { getEllipsisTxt } from '../utils/formatters'
@@ -10,7 +10,7 @@ export interface AddressProps {
   color?: string
 }
 
-const Address = (props: AddressProps) => {
+const Address: FunctionComponent<AddressProps> = (props) => {
   const { account } = useMoralis()
   const [address, setAddress] = useState<string>()
   const [isClicked, setIsClicked] = useState<boolean>(false)
@@ -20,7 +20,6 @@ const Address = (props: AddressProps) => {
   }, [account, props])
 
   if (!address) return <Skeleton title={false} active />
-
   const Copy = () => (
     <svg
       xmlns="http://www.w3.org/2000/svg"

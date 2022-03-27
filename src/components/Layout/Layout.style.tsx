@@ -5,7 +5,7 @@ export const OuterLayoutWrapper = tw.div`
 `
 
 export const OuterHeaderWrapper = tw.div`
-    flex w-screen flex-1 overflow-hidden
+    flex w-screen flex-1 overflow-hidden bg-gray-100
 `
 
 export const InnerHeaderWrapper = tw.div`
@@ -13,5 +13,5 @@ export const InnerHeaderWrapper = tw.div`
 `
 
 export const BodyWrapper = tw.div`
-    mx-auto max-w-4xl py-10
+    mx-auto max-w-5xl p-10
 `

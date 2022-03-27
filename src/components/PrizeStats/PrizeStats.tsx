@@ -64,7 +64,7 @@ const PrizeStats: FunctionComponent = () => {
       <div className="my-2">
         <PrizeStatsText>Will be awarded in</PrizeStatsText>
         <Countdown
-          targetTimestamp={getDrawingDate(
+          targetDate={getDrawingDate(
             lotteryInfo.startTimestamp,
             protocolInfo.drawingPeriod
           )}

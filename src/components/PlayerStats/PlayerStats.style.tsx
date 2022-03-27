@@ -1,7 +1,7 @@
 import tw from 'twin.macro'
 
 export const PlayerStatsCardWrapper = tw.div`
-    space-y-2 rounded-xl bg-gradient-to-r from-prize-blue via-prize-purple to-prize-red p-10 shadow-xl
+    space-y-2 rounded-xl bg-gradient-to-r from-prize-blue to-prize-red p-10 shadow-xl
 `
 
 export const PlayerCardHeaderWrapper = tw.div`

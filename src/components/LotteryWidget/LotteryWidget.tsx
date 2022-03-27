@@ -1,11 +1,16 @@
 import { Avatar, Badge, Divider, Skeleton } from 'antd'
 import { gql, useQuery } from 'urql'
-import { getDrawingDate } from '../../utils/functions'
 import { useMoralis } from 'react-moralis'
 import { CUSDT, USDT } from '../Images/Images'
 import Link from 'next/link'
 import { n4 } from '../../utils/formatters'
 import Countdown from '../Countdown/Countdown'
+import { FunctionComponent } from 'react'
+import { getDrawingDate } from '../../utils/functions'
+
+export interface LotteryWidgetProps {
+  onLotteryEnd: () => void
+}
 
 const query = gql`
   query {
@@ -35,7 +40,9 @@ const query = gql`
   }
 `
 
-const LotteryWidget = () => {
+const LotteryWidget: FunctionComponent<LotteryWidgetProps> = ({
+  onLotteryEnd,
+}) => {
   const { Moralis } = useMoralis()
   const [{ fetching, data }] = useQuery({ query })
 
@@ -44,7 +51,7 @@ const LotteryWidget = () => {
 
   if (fetching) return <Skeleton />
   return (
-    <div className="rounded-xl border py-10 px-32 shadow-xl">
+    <div className="rounded-xl border bg-white py-10 px-32 shadow-xl">
       <div className="flex items-center">
         <div className="flex items-center space-x-4">
           <Avatar.Group>
@@ -73,10 +80,11 @@ const LotteryWidget = () => {
         <div>
           <p className="text-center text-prize-light-gray">Time left</p>
           <Countdown
-            targetTimestamp={getDrawingDate(
+            targetDate={getDrawingDate(
               lotteryInfo.startTimestamp,
               protocolInfo.drawingPeriod
             )}
+            onTargetReached={onLotteryEnd}
           />
         </div>
       </div>

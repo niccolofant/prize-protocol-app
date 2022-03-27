@@ -6,15 +6,15 @@ import Logo from '../../Logo/Logo'
 const Navbar = () => {
   const { account } = useMoralis()
   return (
-    <div className="hidden flex-col border-r p-10 py-6 text-slate-500 shadow-lg lg:inline-flex lg:w-48">
+    <div className="hidden flex-col border-r p-5 text-prize-dark-gray shadow-xl lg:inline-flex lg:w-44 xl:w-60">
       <Logo />
-      <nav className="my-6">
+      <nav className="my-5">
         <ul className="space-y-2">
           <li className="flex">
             <Link href="/">
               <button
                 className="flex flex-grow items-center space-x-4 
-                rounded-lg px-3 py-2 font-medium hover:bg-slate-100"
+                rounded-lg px-3 py-2 font-medium hover:bg-gray-100"
               >
                 <TrophyOutlined />
                 <span>Pools</span>
@@ -25,7 +25,7 @@ const Navbar = () => {
             <Link href={`/${account}/overview`}>
               <button
                 className="flex flex-grow items-center space-x-4 
-                rounded-lg px-3 py-2 font-medium hover:bg-slate-100"
+                rounded-lg px-3 py-2 font-medium hover:bg-gray-100"
               >
                 <UserOutlined />
                 <span>Account</span>

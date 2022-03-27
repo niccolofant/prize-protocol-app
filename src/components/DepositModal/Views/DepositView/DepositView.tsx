@@ -3,9 +3,8 @@ import { FunctionComponent, useEffect, useState } from 'react'
 import { useMoralis, useWeb3Contract } from 'react-moralis'
 import { prizeProtocolABI } from '../../../../utils/abis/prizeProtocolABI'
 import { PROTOCOL_ADDRESS } from '../../../../utils/constants'
-import prize1 from '../../../../assets/images/prize-1.png'
-import Image from 'next/image'
 import { LoadingOutlined } from '@ant-design/icons'
+import Link from 'next/link'
 
 const openNotification = (err: Error) => {
   notification['error']({
@@ -26,7 +25,7 @@ const DepositView: FunctionComponent<DepositViewProps> = ({
   onFinish,
   handleClose,
 }) => {
-  const [isDepositLoading, setIsDepositLoading] = useState(false)
+  const [txHash, setTxHash] = useState('')
   const { Moralis } = useMoralis()
 
   const { runContractFunction: deposit } = useWeb3Contract({
@@ -41,14 +40,12 @@ const DepositView: FunctionComponent<DepositViewProps> = ({
   const handleDeposit = async () => {
     await deposit({
       onSuccess: async (tx: any) => {
-        setIsDepositLoading(true)
+        setTxHash(tx.hash)
         await tx.wait(1)
-        setIsDepositLoading(false)
         onFinish(amountToDeposit)
       },
       onError: (err) => {
         openNotification(err)
-        setIsDepositLoading(false)
         handleClose()
       },
     })
@@ -60,13 +57,34 @@ const DepositView: FunctionComponent<DepositViewProps> = ({
 
   return (
     <div className="flex flex-col items-center">
-      <Image src={prize1} width="250" height="250" />
-      {isDepositLoading && (
-        <div className="space-y-5">
-          <LoadingOutlined />
-          <p>Wait until your deposit of {amountToDeposit} USDT has finished!</p>
+      <div className="text-center">
+        <h3 className="text-2xl font-semibold text-prize-dark-gray">
+          Transaction Pending
+        </h3>
+        <div className="relative space-y-5 p-6 text-center ">
+          <div className="text-7xl text-prize-red">
+            <LoadingOutlined />
+          </div>
+          <p className="text-prize-light-gray">
+            Wait until your deposit of {amountToDeposit} USDT has finished!
+            <br />
+            Your transaction is being recorded to the blockchain and it will be
+            reflected here shortly.
+          </p>
         </div>
-      )}
+        <div className="flex items-center justify-center rounded-b p-6">
+          <Link href={`https://rinkeby.etherscan.io/tx/${txHash}`}>
+            <a
+              className="rounded-lg border px-10 py-3 text-sm font-medium 
+              text-prize-dark-gray shadow-xl hover:text-prize-dark-gray"
+              type="button"
+              target="_blank"
+            >
+              View on Etherscan
+            </a>
+          </Link>
+        </div>
+      </div>
     </div>
   )
 }
