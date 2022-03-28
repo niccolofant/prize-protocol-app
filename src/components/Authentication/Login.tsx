@@ -20,7 +20,7 @@ const Login = () => {
       <div>
         <button
           onClick={() => setIsAuthModalVisible(true)}
-          className="rounded-xl border bg-white px-5 py-1.5 font-semibold text-blue-500"
+          className="rounded-lg border bg-white px-5 py-1.5 font-semibold text-prize-dark-gray"
         >
           Connect Wallet
         </button>
@@ -85,9 +85,9 @@ const Login = () => {
         onClick={() => {
           setIsModalVisible(true)
         }}
-        className="rounded-xl border bg-white px-5 py-1.5 font-semibold text-blue-500"
+        className="rounded-lg border bg-white px-5 py-1.5 font-semibold text-prize-dark-gray"
       >
-        {getEllipsisTxt(account, 6)}
+        {getEllipsisTxt(account, 5)}
       </button>
 
       <Modal

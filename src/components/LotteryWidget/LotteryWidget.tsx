@@ -51,7 +51,7 @@ const LotteryWidget: FunctionComponent<LotteryWidgetProps> = ({
 
   if (fetching) return <Skeleton />
   return (
-    <div className="rounded-xl border bg-white py-10 px-32 shadow-xl">
+    <div className="rounded-xl border bg-white p-5 shadow-xl md:p-10 lg:px-32">
       <div className="flex items-center">
         <div className="flex items-center space-x-4">
           <Avatar.Group>
@@ -64,21 +64,25 @@ const LotteryWidget: FunctionComponent<LotteryWidgetProps> = ({
           <Badge status="processing" color="green" />
         </div>
       </div>
-
       <Divider />
-
-      <div className="flex items-center justify-between space-x-10">
-        <div className="flex flex-col items-center space-y-2">
-          <p className="text-prize-light-gray">Prize Pool</p>
-          <p className="text-5xl font-semibold text-slate-800">
-            <span className="text-xl font-normal text-slate-500">$ </span>
+      <div className="flex items-center justify-between">
+        <div>
+          <p className="text-left text-xs font-normal text-prize-light-gray sm:text-base">
+            Prize Pool
+          </p>
+          <p className="flex items-center gap-1 text-2xl font-semibold text-prize-dark-gray sm:text-3xl md:text-5xl">
+            <span className="text-lg font-normal text-prize-light-gray sm:text-xl">
+              $
+            </span>
             {n4.format(
               parseFloat(Moralis.Units.FromWei(lotteryInfo.prizePool))
             )}
           </p>
         </div>
         <div>
-          <p className="text-center text-prize-light-gray">Time left</p>
+          <p className="text-right text-xs font-normal text-prize-light-gray sm:text-base">
+            Time left
+          </p>
           <Countdown
             targetDate={getDrawingDate(
               lotteryInfo.startTimestamp,
@@ -88,12 +92,10 @@ const LotteryWidget: FunctionComponent<LotteryWidgetProps> = ({
           />
         </div>
       </div>
-
       <Divider />
-
-      <div className="text-center">
+      <div className="flex justify-center">
         <Link href={`/${protocolInfo.address}/deposit`}>
-          <button className="rounded-lg bg-prize-red px-40 py-3 font-semibold text-white shadow-xl">
+          <button className="w-full rounded-lg bg-prize-red py-2 text-sm font-semibold text-white shadow-xl sm:w-1/2 sm:text-base">
             Deposit
           </button>
         </Link>

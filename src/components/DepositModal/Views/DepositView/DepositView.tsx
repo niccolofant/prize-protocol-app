@@ -59,7 +59,7 @@ const DepositView: FunctionComponent<DepositViewProps> = ({
     <div className="flex flex-col items-center">
       <div className="text-center">
         <h3 className="text-2xl font-semibold text-prize-dark-gray">
-          Transaction Pending
+          Deposit Pending
         </h3>
         <div className="relative space-y-5 p-6 text-center ">
           <div className="text-7xl text-prize-red">

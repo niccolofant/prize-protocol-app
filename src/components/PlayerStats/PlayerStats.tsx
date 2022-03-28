@@ -85,12 +85,14 @@ const PlayerStats: FunctionComponent = () => {
         <PlayerCardHeaderWrapper>
           <PlayerCardTitle>Dashboard</PlayerCardTitle>
           <Link href={`/players/${account}`}>
-            <PlayerCardLink>Go to player's profile</PlayerCardLink>
+            <PlayerCardLink>Profile</PlayerCardLink>
           </Link>
         </PlayerCardHeaderWrapper>
         <PlayerCardBodyWrapper>
           <div className="space-y-1">
-            <h3 className="text-white">Redeemable balance</h3>
+            <h3 className="text-sm text-white sm:text-lg">
+              Redeemable balance
+            </h3>
             <PlayerCardText>
               {data && data.player
                 ? Moralis.Units.FromWei(data.player.balance)
@@ -98,7 +100,6 @@ const PlayerStats: FunctionComponent = () => {
               <span className="text-xl"> USDT </span>🎉
             </PlayerCardText>
           </div>
-
           <PlayerCardButton onClick={handleRedeemClick}>
             {isRedeemLoading ? <LoadingOutlined /> : 'Redeem Balance'}
           </PlayerCardButton>

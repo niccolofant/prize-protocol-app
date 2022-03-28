@@ -53,7 +53,7 @@ export const ShowCounter: FunctionComponent<ShowCounterProps> = ({
   seconds,
 }) => {
   return (
-    <div className="flex items-center justify-center space-x-1">
+    <div className="flex items-center justify-center tracking-widest">
       <DateTimeDisplay value={days} type={'Day'} />
       <p className="text-prize-light-gray">:</p>
       <DateTimeDisplay value={hours} type={'Hr'} />

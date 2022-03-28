@@ -27,7 +27,9 @@ const Header: NextPage = () => {
 
   return (
     <HeaderWrapper>
-      {isAuthenticated && <Chains />}
+      <div className="hidden md:inline-flex">
+        {isAuthenticated && <Chains />}
+      </div>
       <Login />
     </HeaderWrapper>
   )

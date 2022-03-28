@@ -31,7 +31,9 @@ const DepositStats: FunctionComponent = () => {
   const deposits: Deposit[] = useMemo(() => {
     const temp: Deposit[] = data?.lotteries[0].deposits
     temp?.forEach((deposit: Deposit) => {
-      deposit.amount = parseInt(Moralis.Units.FromWei(deposit.amount as string))
+      deposit.amount = parseFloat(
+        Moralis.Units.FromWei(deposit.amount as string)
+      )
     })
     return temp
   }, [data])

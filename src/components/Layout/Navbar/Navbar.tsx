@@ -6,7 +6,7 @@ import Logo from '../../Logo/Logo'
 const Navbar = () => {
   const { account } = useMoralis()
   return (
-    <div className="hidden flex-col border-r p-5 text-prize-dark-gray shadow-xl lg:inline-flex lg:w-44 xl:w-60">
+    <div className="hidden flex-col border-r p-5 text-prize-dark-gray shadow-xl md:inline-flex md:w-40 lg:w-52">
       <Logo />
       <nav className="my-5">
         <ul className="space-y-2">

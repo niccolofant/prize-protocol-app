@@ -24,26 +24,27 @@ const deposit: NextPage = () => {
     <Layout>
       <div>
         <div className="space-y-10">
-          <div className="flex items-center justify-between">
-            <div>
-              <div className="flex items-center space-x-4">
-                <Avatar.Group>
-                  <Avatar src={<CUSDT />} />
-                  <Avatar src={<USDT />} />
-                </Avatar.Group>
-                <h1 className="text-4xl font-semibold text-prize-dark-gray">
-                  Prize Lottery USDT
-                </h1>
-              </div>
+          <div className="grid grid-cols-1 space-y-5 bg-red-300 sm:grid-cols-2">
+            <div className="flex items-center justify-center space-x-4 sm:justify-start">
+              <Avatar.Group>
+                <Avatar src={<CUSDT />} />
+                <Avatar src={<USDT />} />
+              </Avatar.Group>
+              <h1 className="text-2xl font-semibold text-prize-dark-gray md:text-4xl">
+                Prize Lottery USDT
+              </h1>
             </div>
-            <div className="flex space-x-5">
+            <div className="">
               <button
                 className="rounded-lg bg-prize-red px-16 py-3 font-semibold text-white shadow-xl"
                 onClick={handleButtonClick}
               >
                 Deposit
               </button>
-              <button className="hidden rounded-lg border bg-white px-16 py-3 font-semibold text-prize-dark-gray shadow-xl md:inline">
+              <button
+                className="rounded-lg border bg-white px-16 py-3 
+              font-semibold text-prize-dark-gray shadow-xl"
+              >
                 Redeem
               </button>
             </div>
