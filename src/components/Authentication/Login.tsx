@@ -33,12 +33,12 @@ const Login = () => {
           bodyStyle={{ padding: 0 }}
         >
           <div className="p-10 font-gilroy dark:border dark:border-slate-700 dark:bg-[#1d1d1d]">
-            <div className="flex flex-col items-center py-5">
+            <div className="flex flex-col items-center space-y-3 py-5">
               <h1 className="font-gilroy text-2xl font-semibold text-slate-800 dark:text-white">
                 Connect Wallet
               </h1>
-              <p className="font-gilroy text-base text-slate-400 dark:text-slate-500">
-                to start using Pryze
+              <p className="text-center font-gilroy text-base text-slate-400 dark:text-slate-500">
+                to start using Prize and get the chance to win big! 🏆
               </p>
             </div>
 
@@ -54,7 +54,7 @@ const Login = () => {
                     try {
                       await authenticate({
                         provider: connectorId as Web3ProviderType,
-                        signingMessage: 'Enjoy Pryze!',
+                        signingMessage: 'Enjoy Prize!',
                       })
                       window.localStorage.setItem('connectorId', connectorId)
                       setIsAuthModalVisible(false)
