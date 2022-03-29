@@ -16,12 +16,12 @@ import SuccessView from './Views/SuccessView/SuccessView'
 
 export interface DepositModalProps {
   visible: boolean
-  handleClose: () => void
+  onClose: () => void
 }
 
 const DepositModal: FunctionComponent<DepositModalProps> = ({
   visible,
-  handleClose,
+  onClose,
 }) => {
   const [step, setStep] = useState(1)
   const [amountToDeposit, setAmountToDeposit] = useState('')
@@ -31,6 +31,11 @@ const DepositModal: FunctionComponent<DepositModalProps> = ({
     setStep((step) => step + 1)
   }, [])
 
+  const handleClose = useCallback(() => {
+    setStep(1)
+    onClose()
+  }, [])
+
   return (
     <>
       {visible && (
@@ -38,7 +43,7 @@ const DepositModal: FunctionComponent<DepositModalProps> = ({
           <DepositModalOuterWrapper>
             <DepositModalInnerWrapper>
               <DepositModalHeaderWrapper>
-                <div className="mr-5 flex justify-end">
+                <div className="flex justify-end">
                   <button onClick={handleClose}>
                     <GrClose />
                   </button>
