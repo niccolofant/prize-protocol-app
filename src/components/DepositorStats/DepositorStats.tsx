@@ -25,7 +25,7 @@ const DepositorStats = () => {
 
   if (!data) return <Skeleton />
   return (
-    <div className="space-y-5 rounded-xl border bg-white p-10 shadow-xl">
+    <div className="space-y-5 rounded-xl border bg-white p-5 shadow-xl sm:p-10">
       <div>
         <h1>Depositors</h1>
         <h3>{depositors.length}</h3>
@@ -35,7 +35,12 @@ const DepositorStats = () => {
           <div className="grid grid-cols-3 text-right" key={deposit.address}>
             <Address address={deposit.address} size={5} />
             <p>{Moralis.Units.FromWei(deposit.balance)} USDT</p>
-            <p>View player</p>
+            <a
+              className="font-semibold text-prize-dark-gray hover:text-prize-dark-gray"
+              target="_blank"
+            >
+              View
+            </a>
           </div>
         ))}
       </div>

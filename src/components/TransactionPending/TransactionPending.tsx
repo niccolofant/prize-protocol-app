@@ -23,8 +23,8 @@ const TransactionPending: FunctionComponent<TransactionPendingProps> = ({
               </h3>
             </div>
             {/*body*/}
-            <div className="relative space-y-5 p-6 text-center ">
-              <div className="text-5xl text-prize-blue">
+            <div className="relative space-y-5 p-6 text-center">
+              <div className="text-7xl text-prize-red">
                 <LoadingOutlined />
               </div>
               <p className="text-prize-light-gray">
@@ -33,7 +33,7 @@ const TransactionPending: FunctionComponent<TransactionPendingProps> = ({
               </p>
             </div>
             {/*footer*/}
-            <div className="flex items-center justify-end rounded-b p-6">
+            <div className="flex items-center justify-center rounded-b p-6">
               <Link href={`https://rinkeby.etherscan.io/tx/${txHash}`}>
                 <a
                   className="rounded-lg border px-10 py-3 text-sm font-medium 

@@ -43,8 +43,12 @@ const LotteryStats: FunctionComponent = () => {
   }
 
   const fetchCompoundApy = useCallback(async () => {
-    const compoundApy = await getCompoundApy()
-    setCompoundApy(compoundApy)
+    try {
+      const compoundApy = await getCompoundApy()
+      setCompoundApy(compoundApy)
+    } catch (err) {
+      console.error(err)
+    }
   }, [])
 
   useEffect(() => {
@@ -53,7 +57,7 @@ const LotteryStats: FunctionComponent = () => {
 
   if (!data) return <Skeleton />
   return (
-    <div className="space-y-3 px-10">
+    <div className="space-y-3 px-5 sm:px-10">
       <h1 className="text-2xl font-semibold text-prize-dark-gray">
         Lottery's Stats
       </h1>

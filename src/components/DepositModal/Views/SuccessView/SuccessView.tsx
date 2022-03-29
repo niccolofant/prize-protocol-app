@@ -8,8 +8,8 @@ export interface SuccessViewProps {
 
 const SuccessView: FunctionComponent<SuccessViewProps> = ({ handleClose }) => {
   return (
-    <div>
-      <Image src={checkmark} width="150" height="150" />
+    <div className="space-y-10">
+      <Image src={checkmark} width="125" height="125" />
       <div className="space-y-10">
         <div className="space-y-2">
           <h1 className="text-2xl font-semibold text-prize-dark-gray">

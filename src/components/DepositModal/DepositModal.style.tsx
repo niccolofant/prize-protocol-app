@@ -6,7 +6,7 @@ export const DepositModalOuterWrapper = tw.div`
 `
 
 export const DepositModalInnerWrapper = tw.div`
-    relative my-6 mx-auto flex sm:w-2/3 lg:w-1/2 flex-col rounded-xl border-0 bg-white 
+    relative my-5 mx-auto flex sm:w-2/3 lg:w-1/2 flex-col rounded-xl border-0 bg-white 
     py-3 shadow-xl outline-none focus:outline-none
 `
 
@@ -19,7 +19,7 @@ export const DepositModalHeaderWrapper = tw.div`
 `
 
 export const DepositModalContentWrapper = tw.div`
-    relative space-y-5 py-10 px-20 text-center
+    relative space-y-5 p-5 sm:px-20 text-center
 `
 
 export const DepositModalFooterWrapper = tw.div`

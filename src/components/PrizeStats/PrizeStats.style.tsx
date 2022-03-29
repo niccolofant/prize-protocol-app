@@ -1,7 +1,7 @@
 import tw from 'twin.macro'
 
 export const PrizeStatsCardWrapper = tw.div`
-    rounded-xl border bg-white p-10 text-center shadow-xl
+    rounded-xl border bg-white p-5 sm:p-10 shadow-xl
 `
 
 export const PrizeStatsTitle = tw.h1`

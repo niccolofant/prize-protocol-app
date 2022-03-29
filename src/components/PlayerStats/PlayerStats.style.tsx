@@ -25,5 +25,5 @@ export const PlayerCardText = tw.p`
 `
 
 export const PlayerCardButton = tw.button`
-    rounded-lg bg-white py-2 px-10 font-semibold text-gray-700 shadow-xl text-sm sm:text-base
+    rounded-lg bg-white py-2 px-10 font-semibold text-prize-dark-gray shadow-xl text-sm sm:text-base
 `

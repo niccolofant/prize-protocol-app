@@ -89,8 +89,8 @@ const ApproveView: FunctionComponent<ApproveViewProps> = ({
   )
 
   return (
-    <div>
-      <div className="space-y-10">
+    <>
+      <div className="space-y-5">
         <div>
           <div className="flex justify-between">
             <label
@@ -105,7 +105,7 @@ const ApproveView: FunctionComponent<ApproveViewProps> = ({
             type="number"
             id="amount"
             className="block w-full rounded-lg border
-          p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 
+            p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 
           dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 
           dark:focus:border-blue-500 dark:focus:ring-blue-500"
             placeholder="1.0"
@@ -120,9 +120,8 @@ const ApproveView: FunctionComponent<ApproveViewProps> = ({
             </p>
           )}
         </div>
-
         <button
-          className="flex-auto rounded-lg bg-prize-red px-16 py-3 font-semibold text-white shadow-xl"
+          className="flex-auto rounded-lg bg-prize-red px-16 py-2 text-sm font-semibold text-white shadow-xl sm:text-base"
           onClick={handleApproveClick}
           disabled={isApproveLoading || !isAmountValid}
         >
@@ -133,7 +132,7 @@ const ApproveView: FunctionComponent<ApproveViewProps> = ({
           <p>{winningOdds}%</p>
         </div>
       </div>
-    </div>
+    </>
   )
 }
 

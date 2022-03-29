@@ -40,13 +40,13 @@ const DepositStats: FunctionComponent = () => {
 
   if (!data) return <Skeleton />
   return (
-    <div className="rounded-xl border bg-white p-10 text-center shadow-xl">
+    <div className="rounded-xl border bg-white p-5 shadow-xl sm:p-10">
       <div>
         <h1 className="text-2xl font-semibold text-prize-dark-gray">
           Total Deposits
         </h1>
-        <h3 className="text-base text-prize-light-gray">
-          Current deposit balance:{' '}
+        <h3 className="my-2 text-base text-prize-light-gray">
+          Deposits:{' '}
           <span className="font-semibold text-prize-dark-gray">
             {Moralis.Units.FromWei(data?.lotteries[0].amountDeposited)}
           </span>{' '}
