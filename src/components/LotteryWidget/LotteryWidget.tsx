@@ -59,7 +59,7 @@ const LotteryWidget: FunctionComponent<LotteryWidgetProps> = ({
             <Avatar src={<USDT />} />
           </Avatar.Group>
           <p className="text-xl font-semibold text-prize-dark-gray">
-            Lottery #{lotteryInfo.id}
+            USDT Prize Lottery #{lotteryInfo.id}
           </p>
           <Badge status="processing" color="green" />
         </div>

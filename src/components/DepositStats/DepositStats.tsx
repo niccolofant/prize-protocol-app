@@ -31,14 +31,12 @@ const DepositStats: FunctionComponent = () => {
   const deposits: Deposit[] = useMemo(() => {
     const temp: Deposit[] = data?.lotteries[0].deposits
     temp?.forEach((deposit: Deposit) => {
-      deposit.amount = parseFloat(
-        Moralis.Units.FromWei(deposit.amount as string)
-      )
+      deposit.amount = parseFloat(deposit.amount as string)
     })
     return temp
   }, [data])
 
-  if (!data) return <Skeleton />
+  if (!data || !deposits) return <Skeleton />
   return (
     <div className="rounded-xl border bg-white p-5 shadow-xl sm:p-10">
       <div>
@@ -48,7 +46,7 @@ const DepositStats: FunctionComponent = () => {
         <h3 className="my-2 text-base text-prize-light-gray">
           Deposit Balance:{' '}
           <span className="font-semibold text-prize-dark-gray">
-            {Moralis.Units.FromWei(data?.lotteries[0].amountDeposited)}
+            {Moralis.Units.FromWei(data.lotteries[0].amountDeposited)}
           </span>{' '}
           USDT
         </h3>
@@ -84,8 +82,9 @@ export const CustomTooltip: FunctionComponent<CustomTooltipProps> = ({
   active,
   payload,
 }) => {
+  const { Moralis } = useMoralis()
+
   if (active && payload && payload.length) {
-    console.log()
     return (
       <div className="border bg-white p-5 shadow-xl">
         <p className="font-semibold text-prize-dark-gray">
@@ -98,7 +97,11 @@ export const CustomTooltip: FunctionComponent<CustomTooltipProps> = ({
         </p>
         <p className="font-semibold text-prize-dark-gray">
           <span className="font-normal text-prize-light-gray">Amount: </span>
-          {n2.format(parseFloat(payload[0].payload.amount))}
+          {n2.format(
+            parseFloat(
+              Moralis.Units.FromWei(payload[0].payload.amount.toString())
+            )
+          )}
           <span className="font-normal text-prize-light-gray"> USDT</span>
         </p>
       </div>

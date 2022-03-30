@@ -13,5 +13,5 @@ export const InnerHeaderWrapper = tw.div`
 `
 
 export const BodyWrapper = tw.div`
-    mx-auto max-w-4xl py-10 px-2 sm:px-5
+    mx-auto max-w-4xl p-2 sm:px-5 sm:py-10
 `

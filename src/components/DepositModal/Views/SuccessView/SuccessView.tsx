@@ -12,7 +12,7 @@ const SuccessView: FunctionComponent<SuccessViewProps> = ({ handleClose }) => {
       <Image src={checkmark} width="125" height="125" />
       <div className="space-y-10">
         <div className="space-y-2">
-          <h1 className="text-2xl font-semibold text-prize-dark-gray">
+          <h1 className="text-xl font-semibold text-prize-dark-gray sm:text-2xl">
             Deposit Successful!
           </h1>
           <h3 className="text-prize-light-gray">
@@ -20,7 +20,7 @@ const SuccessView: FunctionComponent<SuccessViewProps> = ({ handleClose }) => {
           </h3>
         </div>
         <button
-          className="rounded-lg bg-prize-red px-16 py-3 font-semibold text-white shadow-xl"
+          className="w-full rounded-lg bg-prize-red py-2 text-sm font-semibold text-white shadow-xl sm:w-1/2 sm:text-base"
           onClick={handleClose}
         >
           Ok

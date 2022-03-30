@@ -52,7 +52,7 @@ const deposit: NextPage = () => {
                   <span className="text-prize-light-gray">Address: </span>
                   {address && (
                     <Link
-                      href={`https://https://rinkeby.etherscan.io/address/${address}`}
+                      href={`https://rinkeby.etherscan.io/address/${address}`}
                     >
                       <a
                         className="font-semibold text-prize-dark-gray hover:text-prize-dark-gray"

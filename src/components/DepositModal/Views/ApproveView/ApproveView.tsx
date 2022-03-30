@@ -92,18 +92,12 @@ const ApproveView: FunctionComponent<ApproveViewProps> = ({
     <>
       <div className="space-y-5">
         <div>
-          <div className="flex justify-between">
-            <label
-              htmlFor="amount"
-              className="mb-2 block text-sm font-medium text-gray-900 dark:text-gray-300"
-            >
-              Amount
-            </label>
+          <div className="mb-2 flex items-center justify-between text-sm font-medium text-gray-900 dark:text-gray-300">
+            <span>Amount</span>
             <ERC20Balance address={USDT_ADDRESS} name={USDT_NAME} />
           </div>
           <input
             type="number"
-            id="amount"
             className="block w-full rounded-lg border
             p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 
           dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 
@@ -114,22 +108,27 @@ const ApproveView: FunctionComponent<ApproveViewProps> = ({
             min="1"
             required
           />
-          {!isAmountValid && (
+          {!isAmountValid ? (
             <p className="mt-2 flex justify-start text-sm font-medium text-prize-red">
               Minimum deposit is 1 USDT
             </p>
+          ) : (
+            <p className="mt-2 text-sm font-medium text-white">.</p>
           )}
         </div>
         <button
-          className="flex-auto rounded-lg bg-prize-red px-16 py-2 text-sm font-semibold text-white shadow-xl sm:text-base"
+          className="w-full rounded-lg bg-prize-red py-2 text-sm font-semibold text-white shadow-xl sm:w-1/2 sm:text-base"
           onClick={handleApproveClick}
           disabled={isApproveLoading || !isAmountValid}
         >
           {isApproveLoading ? <LoadingOutlined /> : 'Approve Deposit'}
         </button>
         <div>
-          <h4>Your winning odds:</h4>
-          <p>{winningOdds}%</p>
+          <h4 className="text-sm text-prize-light-gray">Your winning odds:</h4>
+          <p className="text-lg font-semibold text-prize-dark-gray">
+            {winningOdds}
+            <span className="font-normal text-prize-light-gray">%</span>
+          </p>
         </div>
       </div>
     </>

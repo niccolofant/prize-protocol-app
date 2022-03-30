@@ -58,7 +58,7 @@ const DepositView: FunctionComponent<DepositViewProps> = ({
   return (
     <div className="flex flex-col items-center">
       <div className="text-center">
-        <h3 className="text-2xl font-semibold text-prize-dark-gray">
+        <h3 className="text-xl font-semibold text-prize-dark-gray sm:text-2xl">
           Deposit Pending
         </h3>
         <div className="relative space-y-5 p-6 text-center ">
@@ -72,11 +72,10 @@ const DepositView: FunctionComponent<DepositViewProps> = ({
             reflected here shortly.
           </p>
         </div>
-        <div className="flex items-center justify-center rounded-b p-6">
+        <div className="flex items-center justify-center rounded-b">
           <Link href={`https://rinkeby.etherscan.io/tx/${txHash}`}>
             <a
-              className="rounded-lg border px-10 py-3 text-sm font-medium 
-              text-prize-dark-gray shadow-xl hover:text-prize-dark-gray"
+              className="w-full rounded-lg border bg-white py-2 text-sm font-semibold text-prize-dark-gray shadow-xl hover:text-prize-dark-gray sm:w-1/2 sm:text-base"
               type="button"
               target="_blank"
             >

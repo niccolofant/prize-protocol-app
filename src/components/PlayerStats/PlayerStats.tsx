@@ -26,7 +26,7 @@ export interface PlayerInfo {
 
 /* Queries */
 const playerInfoQuery = gql`
-  query playerInfo($id: String) {
+  query ($id: String) {
     player(id: $id) {
       balance
     }
@@ -84,9 +84,11 @@ const PlayerStats: FunctionComponent = () => {
       <PlayerStatsCardWrapper>
         <PlayerCardHeaderWrapper>
           <PlayerCardTitle>Dashboard</PlayerCardTitle>
-          <Link href={`/players/${account}`}>
-            <PlayerCardLink>Profile</PlayerCardLink>
-          </Link>
+          {account && (
+            <Link href={`/players/${account}`}>
+              <PlayerCardLink>Profile</PlayerCardLink>
+            </Link>
+          )}
         </PlayerCardHeaderWrapper>
         <PlayerCardBodyWrapper>
           <div className="space-y-1">
