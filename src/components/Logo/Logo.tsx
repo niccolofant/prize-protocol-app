@@ -1,6 +1,13 @@
 import Image from 'next/image'
-import logo from '../../assets/images/logo-no-text-white.svg'
+import { FunctionComponent } from 'react'
+import logo from '../../assets/images/logo-no-text-white.png'
 
-const Logo = () => <Image src={logo} width="100" height="100" />
+export interface LogoProps {
+  size?: string
+}
+
+const Logo: FunctionComponent<LogoProps> = ({ size = '100' }) => (
+  <Image src={logo} width={size} height={size} />
+)
 
 export default Logo
