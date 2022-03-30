@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { FunctionComponent, useCallback, useEffect, useState } from 'react'
 import { useMoralis, useChain } from 'react-moralis'
 import { Dropdown, notification, Badge } from 'antd'
 import menuItems from './menuItems'
@@ -19,7 +19,7 @@ export interface MenuItem {
   link: string
 }
 
-const Chains = () => {
+const Chains: FunctionComponent = () => {
   const { switchNetwork, chainId } = useChain()
   const { Moralis } = useMoralis()
   const [selected, setSelected] = useState<MenuItem>()
@@ -30,22 +30,19 @@ const Chains = () => {
     setSelected(newSelected)
   }, [chainId])
 
-  const handleMenuClick = async (key: string) => {
+  const handleMenuClick = useCallback(async (key: string) => {
     await Moralis.enableWeb3()
     switchNetwork(key).catch((err) => openNotification(err))
-  }
+  }, [])
 
   const menu = (
-    <div
-      className="flex flex-col rounded-lg border border-slate-200 bg-white
-      p-2 font-gilroy shadow-lg dark:border-slate-700 dark:bg-[#1d1d1d]"
-    >
+    <div className="flex flex-col rounded-lg border bg-white p-2 font-gilroy shadow-xl">
       {menuItems.map(({ key, icon, value }) => (
         <button
           onClick={() => handleMenuClick(key)}
           key={key}
-          className={`my-1 rounded-lg px-2 py-1.5 text-sm 
-          font-medium tracking-wide text-slate-800 hover:bg-slate-100 dark:text-white dark:hover:bg-slate-800 
+          className={`hover:bg-gray-10 my-1 rounded-lg px-2 py-1.5 
+          text-sm font-semibold tracking-wide text-prize-dark-gray
           ${chainId === key ? 'bg-slate-100 dark:bg-slate-800' : null}`}
         >
           <div className="flex items-center gap-2">
@@ -63,11 +60,11 @@ const Chains = () => {
   return (
     <Dropdown overlay={menu} trigger={['click']}>
       <button
-        className="flex items-center space-x-2 rounded-lg border bg-white py-1.5 pl-2
-          pr-5 text-sm font-medium text-slate-800"
+        className="flex items-center space-x-2 rounded-lg border bg-white py-1.5 px-2
+          text-sm font-semibold text-prize-dark-gray"
       >
         {selected?.icon}
-        <span className="ml-2">{selected?.value}</span>
+        <span className="ml-2 hidden sm:inline">{selected?.value}</span>
       </button>
     </Dropdown>
   )
