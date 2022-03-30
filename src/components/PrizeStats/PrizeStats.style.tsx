@@ -9,11 +9,11 @@ export const PrizeStatsTitle = tw.h1`
 `
 
 export const PrizeStatsText = tw.p`
-    text-base text-prize-light-gray
+    text-base text-prize-light-gray text-center
 `
 
 export const PrizeStatsHighlightText = tw.p`
-    text-2xl font-medium text-prize-dark-gray
+    text-2xl font-medium text-prize-dark-gray text-center
 `
 
 export const PrizeStatsContentWrapper = tw.div`

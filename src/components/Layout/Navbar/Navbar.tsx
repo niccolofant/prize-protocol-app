@@ -6,8 +6,10 @@ import Logo from '../../Logo/Logo'
 const Navbar = () => {
   const { account } = useMoralis()
   return (
-    <div className="hidden flex-col border-r p-5 text-prize-dark-gray shadow-xl md:inline-flex md:w-40 lg:w-52">
-      <Logo />
+    <div className="hidden flex-col border-r p-5 text-prize-dark-gray shadow-xl md:inline md:w-40 lg:w-52">
+      <div className="text-center">
+        <Logo size="100" />
+      </div>
       <nav className="my-5">
         <ul className="space-y-2">
           <li className="flex">
@@ -33,6 +35,7 @@ const Navbar = () => {
             </Link>
           </li>
         </ul>
+        <div className="">ciao</div>
       </nav>
     </div>
   )

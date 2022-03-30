@@ -62,7 +62,7 @@ const PrizeStats: FunctionComponent = () => {
     <PrizeStatsCardWrapper>
       <PrizeStatsTitle>USDT Prize #{lotteryInfo.id}</PrizeStatsTitle>
       <div className="my-2">
-        <PrizeStatsText>Will be awarded in</PrizeStatsText>
+        <p className="text-base text-prize-light-gray">Will be awarded in</p>
         <Countdown
           targetDate={getDrawingDate(
             lotteryInfo.startTimestamp,

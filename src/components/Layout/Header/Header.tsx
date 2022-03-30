@@ -3,6 +3,7 @@ import { useEffect } from 'react'
 import { useMoralis } from 'react-moralis'
 import Login from '../../Authentication/Login'
 import Chains from '../../Chains/Chains'
+import Logo from '../../Logo/Logo'
 import { HeaderWrapper } from './Header.style'
 
 export type Web3ProviderType =
@@ -27,10 +28,13 @@ const Header: NextPage = () => {
 
   return (
     <HeaderWrapper>
-      <div className="hidden md:inline-flex">
-        {isAuthenticated && <Chains />}
+      <div className="md:opacity-0">
+        <Logo size="65" />
       </div>
-      <Login />
+      <div className="flex items-center space-x-4">
+        {isAuthenticated && <Chains />}
+        <Login />
+      </div>
     </HeaderWrapper>
   )
 }
