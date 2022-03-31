@@ -2,11 +2,13 @@ import Link from 'next/link'
 import { useMoralis } from 'react-moralis'
 import { UserOutlined, TrophyOutlined, GithubOutlined } from '@ant-design/icons'
 import Logo from '../../Logo/Logo'
+import WinSmallCard from '../../WinSmallCard/WinSmallCard'
 
 const Navbar = () => {
   const { account } = useMoralis()
+
   return (
-    <div className="hidden border-r text-prize-dark-gray shadow-xl md:inline md:w-40 lg:w-52">
+    <div className="hidden border-r text-prize-dark-gray shadow-xl md:inline md:w-40 lg:w-60">
       <div className="flex h-screen flex-col space-y-2 p-5">
         <div className="text-center">
           <Logo size="100" />
@@ -22,7 +24,7 @@ const Navbar = () => {
               </Link>
             </li>
             <li className="flex">
-              <Link href={`/${account}/overview`}>
+              <Link href={`/players/${account}`}>
                 <button className="flex flex-grow items-center space-x-4 rounded-lg px-3 py-2 text-prize-light-gray hover:bg-gray-100 hover:text-prize-dark-gray">
                   <UserOutlined />
                   <span>Account</span>
@@ -31,9 +33,11 @@ const Navbar = () => {
             </li>
           </ul>
         </nav>
-        <div className="rounded-lg border p-2"></div>
-        <Link href="/">
-          <button className="flex items-center space-x-4 rounded-lg px-3 py-2 text-prize-light-gray hover:bg-gray-100 hover:text-prize-dark-gray">
+        <div className="hidden lg:inline">
+          <WinSmallCard />
+        </div>
+        <Link href="https://github.com/ocintnaf/prize-protocol-core">
+          <button className="flex items-center space-x-4 rounded-lg px-3 py-2 text-prize-light-gray hover:text-prize-dark-gray">
             <GithubOutlined />
             <span>GitHub</span>
           </button>
