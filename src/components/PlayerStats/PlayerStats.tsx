@@ -17,14 +17,12 @@ import {
   PlayerStatsCardWrapper,
 } from './PlayerStats.style'
 
-/* Types declaration */
 export interface PlayerInfo {
   player: {
     balance: string
   }
 }
 
-/* Queries */
 const playerInfoQuery = gql`
   query ($id: String) {
     player(id: $id) {

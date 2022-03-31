@@ -77,7 +77,10 @@ const PrizeStats: FunctionComponent = () => {
             {n4.format(
               parseFloat(Moralis.Units.FromWei(lotteryInfo.prizePool))
             )}
-            <span className="text-lg text-prize-light-gray"> USDT</span>
+            <span className="text-lg font-medium text-prize-light-gray">
+              {' '}
+              USDT
+            </span>
           </PrizeStatsHighlightText>
           <PrizeStatsText>Prize Pool</PrizeStatsText>
         </div>
@@ -86,7 +89,10 @@ const PrizeStats: FunctionComponent = () => {
           <Image src={prize2} width="200" height="200" />
           <PrizeStatsHighlightText>
             {n4.format(parseFloat(Moralis.Units.FromWei(lotteryInfo.reserve)))}
-            <span className="text-lg text-prize-light-gray"> USDT</span>
+            <span className="text-lg font-medium text-prize-light-gray">
+              {' '}
+              USDT
+            </span>
           </PrizeStatsHighlightText>
           <PrizeStatsText>Reserve</PrizeStatsText>
         </div>
