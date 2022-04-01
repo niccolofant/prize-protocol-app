@@ -16,7 +16,17 @@ const Home = () => {
       <div className="flex-col space-y-10">
         {isLotteryFinshed && <LotteryEndBanner />}
         <PlayerStats />
-        <LotteryWidget onLotteryEnd={handleLotteryEnd} />
+        <div className="space-y-5">
+          <div>
+            <h1 className="text-2xl font-semibold text-prize-dark-gray md:text-4xl">
+              Lotteries
+            </h1>
+            <h3 className="text-prize-light-gray">
+              Choose a lottery and try your luck! 🎰
+            </h3>
+          </div>
+          <LotteryWidget onLotteryEnd={handleLotteryEnd} />
+        </div>
       </div>
     </Layout>
   )
