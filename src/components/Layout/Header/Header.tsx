@@ -5,6 +5,7 @@ import Login from '../../Authentication/Login'
 import Chains from '../../Chains/Chains'
 import Logo from '../../Logo/Logo'
 import { HeaderWrapper } from './Header.style'
+import logo from '../../../assets/images/logo-no-text-white.png'
 
 export type Web3ProviderType =
   | 'metamask'
@@ -29,7 +30,9 @@ const Header: NextPage = () => {
   return (
     <HeaderWrapper>
       <div className="md:opacity-0">
-        <Logo size="65" />
+        <div className="relative h-12 w-12">
+          <Logo src={logo} />
+        </div>
       </div>
       <div className="flex items-center space-x-4">
         {isAuthenticated && <Chains />}

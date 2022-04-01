@@ -1,13 +1,12 @@
 import Image from 'next/image'
 import { FunctionComponent } from 'react'
-import logo from '../../assets/images/logo-no-text-white.png'
 
 export interface LogoProps {
-  size?: string
+  src: StaticImageData
 }
 
-const Logo: FunctionComponent<LogoProps> = ({ size = '100' }) => (
-  <Image src={logo} width={size} height={size} />
+const Logo: FunctionComponent<LogoProps> = ({ src }) => (
+  <Image src={src} layout="fill" objectFit="contain" />
 )
 
 export default Logo
