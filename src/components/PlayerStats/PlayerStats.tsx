@@ -6,6 +6,7 @@ import { useMoralis, useWeb3Contract } from 'react-moralis'
 import { gql, useQuery } from 'urql'
 import { prizeProtocolABI } from '../../utils/abis/prizeProtocolABI'
 import { PROTOCOL_ADDRESS } from '../../utils/constants'
+import { n2 } from '../../utils/formatters'
 import TransactionPending from '../TransactionPending/TransactionPending'
 import {
   PlayerCardBodyWrapper,
@@ -90,12 +91,14 @@ const PlayerStats: FunctionComponent = () => {
         </PlayerCardHeaderWrapper>
         <PlayerCardBodyWrapper>
           <div className="space-y-1">
-            <h3 className="text-sm text-white sm:text-lg">
+            <h3 className="text-sm text-white sm:text-base">
               Redeemable balance
             </h3>
             <PlayerCardText>
               {data && data.player
-                ? Moralis.Units.FromWei(data.player.balance)
+                ? n2.format(
+                    parseFloat(Moralis.Units.FromWei(data.player.balance))
+                  )
                 : '0'}
               <span className="text-xl"> USDT </span>🎉
             </PlayerCardText>
