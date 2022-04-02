@@ -92,7 +92,7 @@ const ApproveView: FunctionComponent<ApproveViewProps> = ({
     <>
       <div className="space-y-5">
         <div>
-          <div className="mb-2 flex items-center justify-between text-sm font-medium text-gray-900 dark:text-gray-300">
+          <div className="flex items-center justify-between text-sm font-medium text-gray-900 dark:text-gray-300">
             <span>Amount</span>
             <ERC20Balance address={USDT_ADDRESS} name={USDT_NAME} />
           </div>
