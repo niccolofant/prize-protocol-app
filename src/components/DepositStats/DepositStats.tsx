@@ -1,4 +1,4 @@
-import { FunctionComponent, useCallback, useMemo } from 'react'
+import { FunctionComponent, useMemo } from 'react'
 import { gql, useQuery } from 'urql'
 import { Line, ResponsiveContainer, LineChart, Tooltip } from 'recharts'
 import { useMoralis } from 'react-moralis'
@@ -79,6 +79,8 @@ const DepositStats: FunctionComponent = () => {
   )
 }
 
+export default DepositStats
+
 export interface CustomTooltipProps {
   active?: boolean
   payload?: Array<any>
@@ -110,4 +112,3 @@ export const CustomTooltip: FunctionComponent<CustomTooltipProps> = ({
 
   return null
 }
-export default DepositStats

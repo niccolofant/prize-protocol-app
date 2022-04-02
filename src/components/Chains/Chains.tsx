@@ -1,5 +1,6 @@
 import { FunctionComponent, useCallback, useEffect, useState } from 'react'
 import { useMoralis, useChain } from 'react-moralis'
+import { VscError } from 'react-icons/vsc'
 import { Dropdown, notification, Badge } from 'antd'
 import menuItems from './menuItems'
 
@@ -41,8 +42,8 @@ const Chains: FunctionComponent = () => {
         <button
           onClick={() => handleMenuClick(key)}
           key={key}
-          className={`hover:bg-gray-10 my-1 rounded-lg px-2 py-1.5 
-          text-sm font-semibold tracking-wide text-prize-dark-gray
+          className={`rounded-lg p-2 text-sm 
+          font-semibold tracking-wide text-prize-dark-gray hover:bg-gray-100
           ${chainId === key ? 'bg-slate-100 dark:bg-slate-800' : null}`}
         >
           <div className="flex items-center gap-2">
@@ -60,11 +61,18 @@ const Chains: FunctionComponent = () => {
   return (
     <Dropdown overlay={menu} trigger={['click']}>
       <button
-        className="flex items-center space-x-2 rounded-lg border bg-white py-1.5 px-2
-          text-sm font-semibold text-prize-dark-gray"
+        className="flex items-center
+          font-gilroy text-sm font-semibold text-prize-dark-gray"
       >
-        {selected?.icon}
-        <span className="ml-2 hidden sm:inline">{selected?.value}</span>
+        {chainId !== '0x4' ? (
+          <span className="flex items-center space-x-1 rounded-lg border bg-white p-2 text-prize-red">
+            <VscError />
+            <span className="hidden sm:inline">Wrong Network</span>
+          </span>
+        ) : (
+          <span className="p-2">{selected?.icon}</span>
+        )}
+        <span className="hidden sm:inline">{selected?.value}</span>
       </button>
     </Dropdown>
   )

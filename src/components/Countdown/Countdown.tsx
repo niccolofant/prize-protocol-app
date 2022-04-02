@@ -81,5 +81,9 @@ export const ExpiredNotice: FunctionComponent = () => {
 export const DateTimeDisplay: FunctionComponent<DateTimeDisplayProps> = ({
   value,
 }) => {
-  return <p className="text-2xl font-medium text-prize-dark-gray">{value}</p>
+  return (
+    <p className="text-center text-2xl font-medium text-prize-dark-gray">
+      {value}
+    </p>
+  )
 }

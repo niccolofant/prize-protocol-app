@@ -7,7 +7,7 @@ export const ModalOuterWrapper = tw.div`
 
 export const ModalInnerWrapper = tw.div`
     relative my-6 mx-auto flex flex-col rounded-xl border-0 bg-white 
-    shadow-xl outline-none focus:outline-none w-screen mx-2 sm:w-2/3 lg:w-1/2
+    shadow-xl outline-none focus:outline-none w-screen sm:w-2/3 lg:w-1/2
 `
 
 export const ModalBackground = tw.div`

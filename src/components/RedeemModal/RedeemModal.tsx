@@ -103,7 +103,7 @@ const RedeemModal: FunctionComponent<RedeemModalProps> = ({
               <ModalContentWrapper>
                 <div className="space-y-5">
                   <div className="space-y-2">
-                    <div className="flex items-center justify-between text-sm font-medium text-gray-900 dark:text-gray-300">
+                    <div className="flex items-center justify-between text-sm font-medium text-prize-dark-gray">
                       <span>Balance</span>
                       <button
                         onClick={() => {

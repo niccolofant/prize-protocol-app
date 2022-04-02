@@ -12,8 +12,7 @@ const Login = () => {
   const [isModalVisible, setIsModalVisible] = useState(false)
   const [isAuthModalVisible, setIsAuthModalVisible] = useState(false)
   const [isCopied, setIsCopied] = useState(false)
-  const { authenticate, isAuthenticated, account, chainId, logout } =
-    useMoralis()
+  const { authenticate, isAuthenticated, account, logout } = useMoralis()
 
   if (!isAuthenticated || !account) {
     return (

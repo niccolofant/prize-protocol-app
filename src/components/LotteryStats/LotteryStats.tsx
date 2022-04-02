@@ -1,5 +1,11 @@
 import { Skeleton } from 'antd'
-import { FunctionComponent, useCallback, useEffect, useState } from 'react'
+import {
+  FunctionComponent,
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+} from 'react'
 import { useMoralis } from 'react-moralis'
 import { gql, useQuery } from 'urql'
 import { n2, n4 } from '../../utils/formatters'
@@ -37,10 +43,13 @@ const LotteryStats: FunctionComponent = () => {
   const [compoundApy, setCompoundApy] = useState('')
   const { isWeb3Enabled, Moralis } = useMoralis()
 
-  const lotteryInfo: LotteryInfo = {
-    ...data?.prizeProtocols[0],
-    ...data?.lotteries[0],
-  }
+  const lotteryInfo: LotteryInfo = useMemo(
+    () => ({
+      ...data?.prizeProtocols[0],
+      ...data?.lotteries[0],
+    }),
+    [data]
+  )
 
   const fetchCompoundApy = useCallback(async () => {
     try {

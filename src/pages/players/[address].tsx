@@ -3,6 +3,8 @@ import { FunctionComponent, useCallback, useMemo, useState } from 'react'
 import { useMoralis } from 'react-moralis'
 import { gql, useQuery } from 'urql'
 import Layout from '../../components/Layout/Layout'
+import PlayerDeposits from '../../components/PlayerDeposits/PlayerDeposits'
+import PlayerRedeems from '../../components/PlayerRedeems/PlayerRedeems'
 import PlayerStats from '../../components/PlayerStats/PlayerStats'
 import RedeemModal from '../../components/RedeemModal/RedeemModal'
 import { getEllipsisTxt } from '../../utils/formatters'
@@ -82,6 +84,10 @@ const Player: FunctionComponent<PlayerProps> = ({ query }) => {
                 )}
               </div>
               <PlayerStats profileLink={false} button={false} />
+              <div className="grid grid-cols-1 gap-5 space-y-5 sm:grid-cols-2 sm:space-y-0">
+                <PlayerDeposits account={query.address} />
+                <PlayerRedeems account={query.address} />
+              </div>
             </div>
             <RedeemModal
               visible={isModalVisible}
