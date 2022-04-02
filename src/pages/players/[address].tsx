@@ -66,7 +66,7 @@ const Player: FunctionComponent<PlayerProps> = ({ query }) => {
               <div className="grid grid-cols-1 items-center justify-between space-y-5 sm:grid-cols-3 sm:space-y-0">
                 <div className="col-span-2 flex items-center justify-start space-x-4 sm:justify-start">
                   <div>
-                    <h1 className="text-2xl font-semibold text-prize-dark-gray md:text-4xl">
+                    <h1 className="text-2xl font-semibold text-prize-dark-gray dark:text-white md:text-4xl">
                       {query.address === account
                         ? 'My Account'
                         : `Player: ${getEllipsisTxt(query.address, 5)}`}
@@ -76,14 +76,18 @@ const Player: FunctionComponent<PlayerProps> = ({ query }) => {
                 </div>
                 {query.address === account && (
                   <button
-                    className="rounded-lg bg-prize-red py-2 px-10 text-sm font-semibold text-white shadow-xl sm:text-base"
+                    className="rounded-lg bg-prize-red py-2 px-10 text-sm font-medium text-white shadow-xl sm:text-base"
                     onClick={handleButtonClick}
                   >
                     Redeem
                   </button>
                 )}
               </div>
-              <PlayerStats profileLink={false} button={false} />
+              <PlayerStats
+                profileLink={false}
+                button={false}
+                account={query.address}
+              />
               <div className="grid grid-cols-1 gap-5 space-y-5 sm:grid-cols-2 sm:space-y-0">
                 <PlayerDeposits account={query.address} />
                 <PlayerRedeems account={query.address} />

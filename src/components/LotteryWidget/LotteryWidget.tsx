@@ -55,7 +55,7 @@ const LotteryWidget: FunctionComponent<LotteryWidgetProps> = ({
   if (fetching) return <Skeleton />
   return (
     <Link href={`/${PROTOCOL_ADDRESS}/deposit`}>
-      <div className="cursor-pointer rounded-xl border bg-white p-5 shadow-xl md:p-10">
+      <div className="cursor-pointer rounded-xl border bg-white p-5 shadow-xl dark:border-prize-dark-gray dark:bg-gray-800 md:p-10">
         <div className="grid grid-cols-3 gap-5">
           <div className="col-span-3 space-y-5 sm:col-span-2">
             <div className="flex items-center">
@@ -66,7 +66,7 @@ const LotteryWidget: FunctionComponent<LotteryWidgetProps> = ({
                 </Avatar.Group>
                 <div>
                   <div className="flex items-center space-x-4">
-                    <h1 className="text-xl font-semibold text-prize-dark-gray sm:text-2xl">
+                    <h1 className="text-xl font-semibold text-prize-dark-gray dark:text-white sm:text-2xl">
                       USDT Prize Lottery #{lotteryInfo.id}
                     </h1>
                     <Badge status="processing" color="green" />
@@ -81,12 +81,12 @@ const LotteryWidget: FunctionComponent<LotteryWidgetProps> = ({
               pool. You get the chance to win by depositing as little as $1!
             </p>
 
-            <div className="flex items-center justify-between rounded-lg border p-2 shadow-sm">
+            <div className="flex items-center justify-between rounded-lg border p-2 shadow-sm dark:border-prize-dark-gray">
               <div>
                 <h3 className="text-left text-xs font-normal text-prize-light-gray sm:text-base">
                   Prize Pool
                 </h3>
-                <p className="flex items-center text-2xl font-medium text-prize-dark-gray">
+                <p className="flex items-center text-2xl font-medium text-prize-dark-gray dark:text-white">
                   $
                   {n4.format(
                     parseFloat(Moralis.Units.FromWei(lotteryInfo.prizePool))
@@ -97,7 +97,7 @@ const LotteryWidget: FunctionComponent<LotteryWidgetProps> = ({
                 <h3 className="text-xs font-normal text-prize-light-gray sm:text-base">
                   Players
                 </h3>
-                <p className="flex items-center text-2xl font-medium text-prize-dark-gray">
+                <p className="flex items-center text-2xl font-medium text-prize-dark-gray dark:text-white">
                   {protocolInfo.players.length}
                 </p>
               </div>

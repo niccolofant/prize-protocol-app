@@ -15,14 +15,12 @@ const TransactionPending: FunctionComponent<TransactionPendingProps> = ({
     <div className={`${isVisible ? 'relative' : 'hidden'}`}>
       <div className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto overflow-x-hidden outline-none focus:outline-none">
         <div className="relative my-6 mx-auto w-96">
-          <div className="relative flex w-full flex-col rounded-xl border-0 bg-white py-3 shadow-xl outline-none focus:outline-none">
-            {/*header*/}
-            <div className="rounded-t border-b border-solid border-gray-200 p-5 text-center">
-              <h3 className="text-2xl font-semibold text-prize-dark-gray">
+          <div className="relative flex w-full flex-col rounded-xl border bg-white py-3 shadow-xl outline-none focus:outline-none dark:border-prize-dark-gray dark:bg-gray-800">
+            <div className="rounded-t border-b border-solid p-5 text-center dark:border-prize-dark-gray">
+              <h3 className="text-2xl font-medium text-prize-dark-gray dark:text-white">
                 Transaction Pending
               </h3>
             </div>
-            {/*body*/}
             <div className="relative space-y-5 p-6 text-center">
               <div className="text-7xl text-prize-red">
                 <LoadingOutlined />
@@ -32,12 +30,10 @@ const TransactionPending: FunctionComponent<TransactionPendingProps> = ({
                 be reflected here shortly.
               </p>
             </div>
-            {/*footer*/}
             <div className="flex items-center justify-center rounded-b p-6">
               <Link href={`https://rinkeby.etherscan.io/tx/${txHash}`}>
                 <a
-                  className="rounded-lg border px-10 py-3 text-sm font-medium 
-              text-prize-dark-gray shadow-xl hover:text-prize-dark-gray"
+                  className="rounded-lg border bg-white px-10 py-3 text-sm font-medium text-prize-dark-gray shadow-xl hover:text-prize-dark-gray dark:border-prize-dark-gray dark:bg-gray-900 dark:text-white"
                   type="button"
                   target="_blank"
                 >

@@ -23,7 +23,7 @@ const ERC20Balance = ({ address, name }: ERC20BalanceProps) => {
   return (
     <div>
       {erc20BalancesError && openErrorNotification(erc20BalancesError)}
-      <div className="flex items-center space-x-1 text-prize-dark-gray">
+      <div className="flex items-center space-x-1 text-prize-dark-gray dark:text-white">
         <IoIosWallet />
         <span className="text-base font-medium">
           {!erc20Balances && !erc20BalancesError && <LoadingOutlined />}

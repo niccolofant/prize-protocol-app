@@ -67,13 +67,13 @@ const LotteryStats: FunctionComponent = () => {
   if (!data) return <Skeleton />
   return (
     <div className="space-y-3 px-5 sm:px-10">
-      <h1 className="text-2xl font-semibold text-prize-dark-gray">
+      <h1 className="text-2xl font-semibold text-prize-dark-gray dark:text-white">
         Lottery's Stats
       </h1>
       <div className="space-y-1">
         <div className="flex justify-between">
           <h3 className="text-prize-light-gray">Deposits</h3>
-          <p className="text-lg font-medium text-prize-dark-gray">
+          <p className="text-lg font-medium text-prize-dark-gray dark:text-white">
             {n2.format(
               parseFloat(Moralis.Units.FromWei(lotteryInfo.amountDeposited))
             )}
@@ -82,14 +82,14 @@ const LotteryStats: FunctionComponent = () => {
         </div>
         <div className="flex justify-between">
           <h3 className="text-prize-light-gray">Reserve</h3>
-          <p className="text-lg font-medium text-prize-dark-gray">
+          <p className="text-lg font-medium text-prize-dark-gray dark:text-white">
             {n2.format(parseFloat(Moralis.Units.FromWei(lotteryInfo.reserve)))}
             <span className="font-normal text-prize-light-gray"> USDT</span>
           </p>
         </div>
         <div className="flex justify-between">
           <h3 className="text-prize-light-gray">Total deposits</h3>
-          <p className="text-lg font-medium text-prize-dark-gray">
+          <p className="text-lg font-medium text-prize-dark-gray dark:text-white">
             {n2.format(
               parseFloat(Moralis.Units.FromWei(lotteryInfo.reserve)) +
                 parseFloat(Moralis.Units.FromWei(lotteryInfo.amountDeposited))
@@ -99,32 +99,31 @@ const LotteryStats: FunctionComponent = () => {
         </div>
         <div className="flex justify-between">
           <h3 className="text-prize-light-gray">Reserve Rate</h3>
-          <p className="text-lg font-medium text-prize-dark-gray">
+          <p className="text-lg font-medium text-prize-dark-gray dark:text-white">
             0<span className="font-normal text-prize-light-gray">%</span>
           </p>
         </div>
         <div className="flex justify-between">
           <h3 className="text-prize-light-gray">Token</h3>
-          <span className="flex items-center gap-1 text-lg font-medium text-prize-dark-gray">
+          <span className="flex items-center gap-1 text-lg font-medium text-prize-dark-gray dark:text-white">
             USDT
             <USDT size="20" />
           </span>
         </div>
         <div className="flex justify-between">
           <h3 className="text-prize-light-gray">Yield Token</h3>
-          <span className="flex items-center gap-1 text-lg font-medium text-prize-dark-gray">
+          <span className="flex items-center gap-1 text-lg font-medium text-prize-dark-gray dark:text-white">
             cUSDT
             <CUSDT size="20" />
           </span>
         </div>
-        <hr />
         <div className="flex justify-between">
           <h3 className="text-prize-light-gray">Yield Source</h3>
           <Compound size="20" />
         </div>
         <div className="flex justify-between">
           <h3 className="text-prize-light-gray">Effective APY </h3>
-          <p className="text-lg font-medium text-prize-dark-gray">
+          <p className="text-lg font-medium text-prize-dark-gray dark:text-white">
             {isWeb3Enabled ? n4.format(parseFloat(compoundApy)) : '-'}
             <span className="font-normal text-prize-light-gray">%</span>
           </p>

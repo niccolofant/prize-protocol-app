@@ -5,6 +5,7 @@ import Chains from '../../Chains/Chains'
 import Logo from '../../Logo/Logo'
 import { HeaderWrapper } from './Header.style'
 import logo from '../../../assets/images/logo-no-text-white.png'
+import Switcher from '../../Theme/Switcher'
 
 export type Web3ProviderType =
   | 'metamask'
@@ -33,9 +34,10 @@ const Header: FunctionComponent = () => {
           <Logo src={logo} />
         </div>
       </div>
-      <div className="flex items-center space-x-4">
+      <div className="flex items-center gap-5">
         {isAuthenticated && <Chains />}
         <Login />
+        <Switcher />
       </div>
     </HeaderWrapper>
   )

@@ -40,14 +40,14 @@ const DepositStats: FunctionComponent = () => {
 
   if (!data || !deposits) return <Skeleton />
   return (
-    <div className="rounded-xl border bg-white p-5 shadow-xl sm:p-10">
+    <div className="rounded-xl border bg-white p-5 shadow-xl dark:border-prize-dark-gray dark:bg-gray-800 sm:p-10">
       <div>
-        <h1 className="text-2xl font-semibold text-prize-dark-gray">
+        <h1 className="text-2xl font-semibold text-prize-dark-gray dark:text-white">
           Total Deposits
         </h1>
         <h3 className="my-2 text-base text-prize-light-gray">
           Deposit Balance:{' '}
-          <span className="font-semibold text-prize-dark-gray">
+          <span className="font-semibold text-prize-dark-gray dark:text-white">
             {n2.format(
               parseFloat(
                 Moralis.Units.FromWei(data.lotteries[0].amountDeposited)
@@ -92,16 +92,16 @@ export const CustomTooltip: FunctionComponent<CustomTooltipProps> = ({
 }) => {
   if (active && payload && payload.length > 0) {
     return (
-      <div className="border bg-white p-5 shadow-xl">
-        <p className="font-semibold text-prize-dark-gray">
+      <div className="rounded-xl border bg-white p-5 shadow-xl dark:border-prize-dark-gray dark:bg-gray-900">
+        <p className="font-medium text-prize-dark-gray dark:text-white">
           <span className="font-normal text-prize-light-gray">Tx Hash: </span>
           {getEllipsisTxt(payload[0].payload.id)}
         </p>
-        <p className="font-semibold text-prize-dark-gray">
+        <p className="font-medium text-prize-dark-gray dark:text-white">
           <span className="font-normal text-prize-light-gray">Date: </span>
           {new Date(payload[0].payload.timestamp * 1000).toDateString()}
         </p>
-        <p className="font-semibold text-prize-dark-gray">
+        <p className="font-medium text-prize-dark-gray dark:text-white">
           <span className="font-normal text-prize-light-gray">Amount: </span>
           {n2.format(payload[0].payload.amount)}
           <span className="font-normal text-prize-light-gray"> USDT</span>

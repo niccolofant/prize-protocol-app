@@ -81,7 +81,7 @@ const PrizeStats: FunctionComponent = () => {
           </PrizeStatsHighlightText>
           <PrizeStatsText>Prize Pool</PrizeStatsText>
         </div>
-        <span className="text-6xl text-prize-dark-gray">+</span>
+        <span className="text-6xl text-prize-light-gray">+</span>
         <div>
           <Image src={prize2} width="200" height="200" />
           <PrizeStatsHighlightText>

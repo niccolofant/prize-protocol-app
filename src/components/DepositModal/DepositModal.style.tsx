@@ -6,8 +6,9 @@ export const ModalOuterWrapper = tw.div`
 `
 
 export const ModalInnerWrapper = tw.div`
-    relative my-6 mx-auto flex flex-col rounded-xl border-0 bg-white 
+    relative my-6 mx-auto flex flex-col rounded-xl bg-white 
     shadow-xl outline-none focus:outline-none w-screen sm:w-2/3 lg:w-1/2
+    dark:bg-gray-800 border dark:border-prize-dark-gray
 `
 
 export const ModalBackground = tw.div`
@@ -15,7 +16,7 @@ export const ModalBackground = tw.div`
 `
 
 export const ModalHeaderWrapper = tw.div`
-    space-y-1 rounded-t border-b border-solid border-gray-200 p-5 text-center
+    space-y-1 border-b p-5 text-center dark:border-prize-dark-gray
 `
 
 export const ModalContentWrapper = tw.div`
@@ -23,5 +24,5 @@ export const ModalContentWrapper = tw.div`
 `
 
 export const ModalFooterWrapper = tw.div`
-    flex items-center justify-end rounded-b pb-5
+    flex items-center justify-end pb-5
 `

@@ -82,7 +82,7 @@ export const DateTimeDisplay: FunctionComponent<DateTimeDisplayProps> = ({
   value,
 }) => {
   return (
-    <p className="text-center text-2xl font-medium text-prize-dark-gray">
+    <p className="text-center text-2xl font-medium text-prize-dark-gray dark:text-white">
       {value}
     </p>
   )

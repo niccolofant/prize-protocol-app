@@ -1,6 +1,7 @@
 import { Avatar } from 'antd'
 import { FunctionComponent, useCallback, useState } from 'react'
 import { GrClose } from 'react-icons/gr'
+import { IoIosClose } from 'react-icons/io'
 import { CUSDT, USDT } from '../Images/Images'
 import {
   ModalBackground,
@@ -45,14 +46,18 @@ const DepositModal: FunctionComponent<DepositModalProps> = ({
               <ModalHeaderWrapper>
                 <div className="flex justify-end">
                   <button onClick={handleClose}>
-                    <GrClose />
+                    <span className="text-2xl text-prize-light-gray">
+                      <IoIosClose />
+                    </span>
                   </button>
                 </div>
                 <Avatar.Group>
                   <Avatar src={<CUSDT />} />
                   <Avatar src={<USDT />} />
                 </Avatar.Group>
-                <h3 className="text-xl font-medium">Deposit USDT</h3>
+                <h3 className="text-xl font-medium text-prize-dark-gray dark:text-white">
+                  Deposit USDT
+                </h3>
                 <h4 className="text-prize-light-gray">Step: {step} of 3</h4>
               </ModalHeaderWrapper>
               <ModalContentWrapper>

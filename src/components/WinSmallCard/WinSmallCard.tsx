@@ -42,20 +42,16 @@ const WinSmallCard: FunctionComponent = () => {
 
   if (account && win)
     return (
-      <div className="space-y-2 rounded-lg border p-2 text-center shadow-xl">
+      <div className="space-y-2 rounded-lg border p-2 text-center shadow-xl dark:border-prize-dark-gray dark:bg-gray-900">
         <h1 className="text-sm font-medium text-prize-light-gray">
-          Lottery #
-          <span className="font-semibold text-prize-dark-gray">
-            {win.lottery.id}
-          </span>{' '}
-          has ended!
+          Lottery #{win.lottery.id} has ended!
         </h1>
         <div>
           <Image src={logo} width="125" height="125" />
-          <h2 className="font-semibold text-prize-dark-gray">
+          <h2 className="font-semibold text-prize-dark-gray dark:text-white">
             {win.winner.address === account
               ? 'You '
-              : `${getEllipsisTxt(win.winner.address, 5)} `}
+              : `${getEllipsisTxt(win.winner.address, 4)} `}
             <span className="font-medium text-prize-light-gray">won </span>
             {`$${n4.format(parseFloat(Moralis.Units.FromWei(win.amount)))}`} 🎉
           </h2>

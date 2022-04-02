@@ -21,6 +21,7 @@ import {
 export interface PlayerstatsProps {
   profileLink?: boolean
   button?: boolean
+  account: string
 }
 
 export interface PlayerInfo {
@@ -48,11 +49,12 @@ const openNotification = (err: Error) => {
 const PlayerStats: FunctionComponent<PlayerstatsProps> = ({
   profileLink = true,
   button = true,
+  account,
 }) => {
   const [isRedeemLoading, setIsRedeemLoading] = useState(false)
   const [isTransactionPending, setIsTransactionPending] = useState(false)
   const [txHash, setTxHash] = useState('')
-  const { account, Moralis } = useMoralis()
+  const { Moralis } = useMoralis()
   const [{ data }] = useQuery<PlayerInfo>({
     query: playerInfoQuery,
     variables: { id: account },

@@ -1,8 +1,7 @@
 import { LoadingOutlined } from '@ant-design/icons'
 import { Avatar, notification } from 'antd'
 import { FunctionComponent, useCallback, useState } from 'react'
-import { GrClose } from 'react-icons/gr'
-import { IoIosWallet } from 'react-icons/io'
+import { IoIosWallet, IoIosClose } from 'react-icons/io'
 import { useMoralis, useWeb3Contract } from 'react-moralis'
 import { prizeProtocolABI } from '../../utils/abis/prizeProtocolABI'
 import { PROTOCOL_ADDRESS } from '../../utils/constants'
@@ -88,14 +87,18 @@ const RedeemModal: FunctionComponent<RedeemModalProps> = ({
               <ModalHeaderWrapper>
                 <div className="flex justify-end">
                   <button onClick={onClose}>
-                    <GrClose />
+                    <span className="text-2xl text-prize-light-gray">
+                      <IoIosClose />
+                    </span>
                   </button>
                 </div>
                 <Avatar.Group>
                   <Avatar src={<CUSDT />} />
                   <Avatar src={<USDT />} />
                 </Avatar.Group>
-                <h3 className="text-xl font-medium">Redeem USDT</h3>
+                <h3 className="text-xl font-medium text-prize-dark-gray dark:text-white">
+                  Redeem USDT
+                </h3>
                 <h4 className="text-prize-light-gray">
                   You will convert your ptUSDTc to USDT
                 </h4>
@@ -103,7 +106,7 @@ const RedeemModal: FunctionComponent<RedeemModalProps> = ({
               <ModalContentWrapper>
                 <div className="space-y-5">
                   <div className="space-y-2">
-                    <div className="flex items-center justify-between text-sm font-medium text-prize-dark-gray">
+                    <div className="flex items-center justify-between text-sm font-medium text-prize-dark-gray dark:text-white">
                       <span>Balance</span>
                       <button
                         onClick={() => {
@@ -111,7 +114,7 @@ const RedeemModal: FunctionComponent<RedeemModalProps> = ({
                           handleFormChange
                         }}
                       >
-                        <span className="flex items-center space-x-1 text-prize-dark-gray">
+                        <span className="flex items-center space-x-1 text-prize-dark-gray dark:text-white">
                           <IoIosWallet />
                           <span className="text-base font-medium">
                             {n2.format(
@@ -142,11 +145,13 @@ const RedeemModal: FunctionComponent<RedeemModalProps> = ({
                         Invalid amount
                       </p>
                     ) : (
-                      <p className="mt-2 text-sm font-medium text-white">.</p>
+                      <p className="mt-2 text-sm font-medium text-white dark:text-gray-800">
+                        .
+                      </p>
                     )}
                   </div>
                   <button
-                    className="w-full rounded-lg bg-prize-red py-2 text-sm font-semibold text-white shadow-xl sm:w-1/2 sm:text-base"
+                    className="w-full rounded-lg bg-prize-red py-2 text-sm font-medium text-white shadow-xl sm:w-1/2 sm:text-base"
                     onClick={handleRedeemClick}
                     disabled={isRedeemLoading || !isAmountValid}
                   >

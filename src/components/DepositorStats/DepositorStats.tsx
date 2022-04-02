@@ -26,9 +26,9 @@ const DepositorStats = () => {
 
   if (!depositors) return <Skeleton />
   return (
-    <div className="space-y-5 rounded-xl border bg-white p-5 shadow-xl sm:p-10">
+    <div className="space-y-5 rounded-xl border bg-white p-5 shadow-xl dark:border-prize-dark-gray dark:bg-gray-800 sm:p-10">
       <div>
-        <h1 className="text-2xl font-semibold text-prize-dark-gray">
+        <h1 className="text-2xl font-semibold text-prize-dark-gray dark:text-white">
           Depositors
         </h1>
         <h3 className="my-2 text-base text-prize-light-gray">
@@ -48,22 +48,22 @@ const DepositorStats = () => {
             key={depositor.address}
           >
             <Link href={`/players/${depositor.address}`}>
-              <a className="font-semibold text-prize-dark-gray hover:text-prize-dark-gray">
+              <a className="font-medium text-prize-dark-gray hover:text-prize-dark-gray dark:text-white">
                 {account === depositor.address
                   ? 'You'
                   : getEllipsisTxt(depositor.address, 5)}
               </a>
             </Link>
-            <p className="text-right font-semibold text-prize-dark-gray sm:text-center">
+            <p className="text-right font-medium text-prize-dark-gray dark:text-white sm:text-center">
               {n2.format(parseFloat(Moralis.Units.FromWei(depositor.balance)))}
-              <span className="text-sm font-medium text-prize-light-gray">
+              <span className="font-base text-sm text-prize-light-gray">
                 {' '}
                 USDT
               </span>
             </p>
             <div className="hidden text-right sm:inline">
               <Link href={`/players/${depositor.address}`}>
-                <a className="font-medium text-prize-dark-gray hover:text-prize-dark-gray">
+                <a className="font-medium text-prize-dark-gray hover:text-prize-dark-gray dark:text-white">
                   View Player
                 </a>
               </Link>

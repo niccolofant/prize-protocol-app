@@ -49,9 +49,9 @@ const PlayerDeposits: FunctionComponent<PlayerDepositsProps> = ({
   if (!data || !deposits) return <Skeleton />
 
   return (
-    <div className="space-y-5 rounded-xl border p-5 shadow-xl sm:p-10">
+    <div className="space-y-5 rounded-xl border bg-white p-5 shadow-xl dark:border-prize-dark-gray dark:bg-gray-800 sm:p-10">
       <div>
-        <h1 className="text-2xl font-semibold text-prize-dark-gray">
+        <h1 className="text-2xl font-semibold text-prize-dark-gray dark:text-white">
           Deposits
         </h1>
         <h3 className="my-2 text-base text-prize-light-gray">

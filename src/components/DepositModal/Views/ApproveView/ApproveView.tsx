@@ -92,7 +92,7 @@ const ApproveView: FunctionComponent<ApproveViewProps> = ({
     <>
       <div className="space-y-5">
         <div>
-          <div className="flex items-center justify-between text-sm font-medium text-gray-900 dark:text-gray-300">
+          <div className="flex items-center justify-between text-sm font-medium text-prize-dark-gray dark:text-white">
             <span>Amount</span>
             <ERC20Balance address={USDT_ADDRESS} name={USDT_NAME} />
           </div>
@@ -113,11 +113,13 @@ const ApproveView: FunctionComponent<ApproveViewProps> = ({
               Minimum deposit is 1 USDT
             </p>
           ) : (
-            <p className="mt-2 text-sm font-medium text-white">.</p>
+            <p className="mt-2 text-sm font-medium text-white dark:text-gray-800">
+              .
+            </p>
           )}
         </div>
         <button
-          className="w-full rounded-lg bg-prize-red py-2 text-sm font-semibold text-white shadow-xl sm:w-1/2 sm:text-base"
+          className="w-full rounded-lg bg-prize-red py-2 text-sm font-medium text-white shadow-xl sm:w-1/2 sm:text-base"
           onClick={handleApproveClick}
           disabled={isApproveLoading || !isAmountValid}
         >
@@ -125,7 +127,7 @@ const ApproveView: FunctionComponent<ApproveViewProps> = ({
         </button>
         <div>
           <h4 className="text-sm text-prize-light-gray">Your winning odds:</h4>
-          <p className="text-lg font-semibold text-prize-dark-gray">
+          <p className="text-lg font-medium text-prize-dark-gray dark:text-white">
             {winningOdds}
             <span className="font-normal text-prize-light-gray">%</span>
           </p>

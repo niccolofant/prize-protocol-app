@@ -5,6 +5,7 @@ import { prizeProtocolABI } from '../../../../utils/abis/prizeProtocolABI'
 import { PROTOCOL_ADDRESS } from '../../../../utils/constants'
 import { LoadingOutlined } from '@ant-design/icons'
 import Link from 'next/link'
+import { n2 } from '../../../../utils/formatters'
 
 const openNotification = (err: Error) => {
   notification['error']({
@@ -58,7 +59,7 @@ const DepositView: FunctionComponent<DepositViewProps> = ({
   return (
     <div className="flex flex-col items-center">
       <div className="text-center">
-        <h3 className="text-xl font-semibold text-prize-dark-gray sm:text-2xl">
+        <h3 className="text-xl font-medium text-prize-dark-gray dark:text-white sm:text-2xl">
           Deposit Pending
         </h3>
         <div className="relative space-y-5 p-6 text-center ">
@@ -66,7 +67,8 @@ const DepositView: FunctionComponent<DepositViewProps> = ({
             <LoadingOutlined />
           </div>
           <p className="text-prize-light-gray">
-            Wait until your deposit of {amountToDeposit} USDT has finished!
+            Wait until your deposit of {n2.format(parseFloat(amountToDeposit))}{' '}
+            USDT has finished!
             <br />
             Your transaction is being recorded to the blockchain and it will be
             reflected here shortly.
@@ -75,7 +77,7 @@ const DepositView: FunctionComponent<DepositViewProps> = ({
         <div className="flex items-center justify-center rounded-b">
           <Link href={`https://rinkeby.etherscan.io/tx/${txHash}`}>
             <a
-              className="w-full rounded-lg border bg-white py-2 text-sm font-semibold text-prize-dark-gray shadow-xl hover:text-prize-dark-gray sm:w-1/2 sm:text-base"
+              className="w-full rounded-lg border bg-white py-2 text-sm font-medium text-prize-dark-gray shadow-xl hover:text-prize-dark-gray dark:border-prize-dark-gray dark:bg-gray-900 dark:text-white sm:w-1/2 sm:text-base"
               type="button"
               target="_blank"
             >
