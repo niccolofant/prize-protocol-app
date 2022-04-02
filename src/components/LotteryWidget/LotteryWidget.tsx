@@ -8,7 +8,7 @@ import { n4 } from '../../utils/formatters'
 import Countdown from '../Countdown/Countdown'
 import { FunctionComponent } from 'react'
 import { getDrawingDate } from '../../utils/functions'
-import diamond from '../../assets/images/diamond.png'
+import diamonds from '../../assets/images/diamonds.png'
 import { PROTOCOL_ADDRESS } from '../../utils/constants'
 
 export interface LotteryWidgetProps {
@@ -105,7 +105,6 @@ const LotteryWidget: FunctionComponent<LotteryWidgetProps> = ({
                 <h3 className="text-right text-xs font-normal text-prize-light-gray sm:text-base">
                   Time left
                 </h3>
-
                 <Countdown
                   targetDate={getDrawingDate(
                     lotteryInfo.startTimestamp,
@@ -115,7 +114,6 @@ const LotteryWidget: FunctionComponent<LotteryWidgetProps> = ({
                 />
               </div>
             </div>
-
             <div className="justify-left flex">
               <Link href={`/${protocolInfo.address}/deposit`}>
                 <button className="w-full rounded-lg bg-prize-red py-2 text-sm font-semibold text-white shadow-xl sm:w-1/2 sm:text-base">
@@ -123,9 +121,6 @@ const LotteryWidget: FunctionComponent<LotteryWidgetProps> = ({
                 </button>
               </Link>
             </div>
-          </div>
-          <div className="relative hidden sm:inline-flex">
-            <Image src={diamond} layout="fill" objectFit="contain" />
           </div>
         </div>
       </div>

@@ -15,7 +15,7 @@ const Switcher: FunctionComponent = () => {
     <DarkModeSwitch
       checked={isDarkMode}
       onChange={handleClick}
-      size={30}
+      size={20}
       sunColor="#9ca3af"
       moonColor="#9ca3af"
     />

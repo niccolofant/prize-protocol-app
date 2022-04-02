@@ -21,6 +21,7 @@ const Layout: FunctionComponent<LayoutProps> = ({ children }) => {
         <InnerHeaderWrapper>
           <Header />
           <BodyWrapper>{children}</BodyWrapper>
+          <div className="fixed z-50">ciao</div>
           <Footer />
         </InnerHeaderWrapper>
       </OuterHeaderWrapper>

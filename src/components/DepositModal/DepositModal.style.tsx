@@ -6,9 +6,9 @@ export const ModalOuterWrapper = tw.div`
 `
 
 export const ModalInnerWrapper = tw.div`
-    relative my-6 mx-auto flex flex-col rounded-xl bg-white 
+    relative my-6 flex flex-col rounded-xl bg-white 
     shadow-xl outline-none focus:outline-none w-screen sm:w-2/3 lg:w-1/2
-    dark:bg-gray-800 border dark:border-prize-dark-gray
+    dark:bg-gray-800 border dark:border-prize-dark-gray mx-2
 `
 
 export const ModalBackground = tw.div`

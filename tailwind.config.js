@@ -15,6 +15,9 @@ module.exports = {
       fontFamily: {
         gilroy: ['Gilroy', 'Helvetica', 'Arial', 'sans-serif'],
       },
+      backgroundImage: {
+        'gradient-radial': 'radial-gradient(var(--gradient-color-stops))',
+      },
     },
   },
   darkMode: 'class',

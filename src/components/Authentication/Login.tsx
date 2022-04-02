@@ -31,9 +31,9 @@ const Login = () => {
           <>
             <ModalOuterWrapper>
               <div
-                className="relative my-6 mx-auto flex w-screen flex-col rounded-xl 
-                border bg-white shadow-xl outline-none focus:outline-none dark:border-prize-dark-gray
-                dark:bg-gray-800 sm:w-2/3 lg:w-1/3"
+                className="relative my-6 mx-2 flex w-screen flex-col 
+                rounded-xl border bg-white shadow-xl outline-none focus:outline-none
+                dark:border-prize-dark-gray dark:bg-gray-800 sm:w-2/3 lg:w-1/3"
               >
                 <ModalHeaderWrapper>
                   <div className="flex justify-end">
@@ -107,9 +107,9 @@ const Login = () => {
         <>
           <ModalOuterWrapper>
             <div
-              className="relative my-6 mx-auto flex w-screen flex-col rounded-xl 
-                border bg-white shadow-xl outline-none focus:outline-none dark:border-prize-dark-gray
-                dark:bg-gray-800 sm:w-2/3 lg:w-1/3"
+              className="relative my-6 mx-2 flex w-screen flex-col 
+                rounded-xl border bg-white shadow-xl outline-none focus:outline-none
+                dark:border-prize-dark-gray dark:bg-gray-800 sm:w-2/3 lg:w-1/3"
             >
               <ModalHeaderWrapper>
                 <div className="flex justify-end">

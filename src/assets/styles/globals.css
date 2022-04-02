@@ -39,3 +39,13 @@
     src: url('../../../public/fonts/gilroy/Gilroy-Bold.ttf');
   }
 }
+
+.grad1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  height: 100%;
+  width: 100%;
+  background-image: radial-gradient(transparent, #4b5563 40%, #1f2937 60%);
+}
