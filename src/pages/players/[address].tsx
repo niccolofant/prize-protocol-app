@@ -61,20 +61,27 @@ const Player: FunctionComponent<PlayerProps> = ({ query }) => {
         <Layout>
           <div>
             <div className="space-y-10">
-              <div>
-                <h1 className="text-2xl font-semibold text-prize-dark-gray md:text-4xl">
-                  {query.address === account
-                    ? 'My Account'
-                    : `Player: ${getEllipsisTxt(query.address, 5)}`}
-                </h1>
-                <h3 className="text-prize-light-gray">Account overview</h3>
+              <div className="grid grid-cols-1 items-center justify-between space-y-5 sm:grid-cols-3 sm:space-y-0">
+                <div className="col-span-2 flex items-center justify-start space-x-4 sm:justify-start">
+                  <div>
+                    <h1 className="text-2xl font-semibold text-prize-dark-gray md:text-4xl">
+                      {query.address === account
+                        ? 'My Account'
+                        : `Player: ${getEllipsisTxt(query.address, 5)}`}
+                    </h1>
+                    <h3 className="text-prize-light-gray">Account overview</h3>
+                  </div>
+                </div>
+                {query.address === account && (
+                  <button
+                    className="rounded-lg bg-prize-red py-2 px-10 text-sm font-semibold text-white shadow-xl sm:text-base"
+                    onClick={handleButtonClick}
+                  >
+                    Redeem
+                  </button>
+                )}
               </div>
-              <button
-                className="rounded-lg bg-prize-red py-2 px-10 text-sm font-semibold text-white shadow-xl sm:text-base"
-                onClick={handleButtonClick}
-              >
-                Deposit
-              </button>
+              <PlayerStats profileLink={false} button={false} />
             </div>
             <RedeemModal
               visible={isModalVisible}

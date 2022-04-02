@@ -1,9 +1,10 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { useMoralis } from 'react-moralis'
 import { UserOutlined, TrophyOutlined, GithubOutlined } from '@ant-design/icons'
 import Logo from '../../Logo/Logo'
 import WinSmallCard from '../../WinSmallCard/WinSmallCard'
-import logo from '../../../assets/images/logo-white-text.png'
+import logo from '../../../assets/images/logo-text-white.png'
 import AllWins from '../../AllWins/AllWins'
 import { FunctionComponent } from 'react'
 
@@ -13,7 +14,7 @@ const Navbar: FunctionComponent = () => {
   return (
     <div className="hidden border-r text-prize-dark-gray shadow-xl md:inline md:w-40 lg:w-60">
       <div className="flex h-screen flex-col space-y-2 p-5">
-        <div className="relative flex h-12 justify-end">
+        <div className="relative ml-2 h-12">
           <Logo src={logo} />
         </div>
         <nav className="flex-1 py-5">

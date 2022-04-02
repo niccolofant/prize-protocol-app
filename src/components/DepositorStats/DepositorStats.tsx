@@ -1,8 +1,7 @@
 import { Skeleton } from 'antd'
 import { useMoralis } from 'react-moralis'
 import { gql, useQuery } from 'urql'
-import { n2 } from '../../utils/formatters'
-import Address from '../Address'
+import { getEllipsisTxt, n2 } from '../../utils/formatters'
 import Link from 'next/link'
 
 export interface Depositor {
@@ -21,11 +20,11 @@ const depositorsQuery = gql`
 
 const DepositorStats = () => {
   const [{ data }] = useQuery({ query: depositorsQuery })
-  const { Moralis } = useMoralis()
+  const { account, Moralis } = useMoralis()
 
   const depositors: Depositor[] = data?.players
 
-  if (!data) return <Skeleton />
+  if (!depositors) return <Skeleton />
   return (
     <div className="space-y-5 rounded-xl border bg-white p-5 shadow-xl sm:p-10">
       <div>
@@ -37,26 +36,38 @@ const DepositorStats = () => {
         </h3>
       </div>
       <div>
-        <div className="grid grid-cols-3">
+        <div className="grid grid-cols-2 space-y-2 sm:grid-cols-3">
           <h3 className="text-left text-prize-light-gray">Address</h3>
-          <h3 className="text-center text-prize-light-gray">Balance</h3>
+          <h3 className="text-right text-prize-light-gray sm:text-center">
+            Balance
+          </h3>
         </div>
-        {depositors.map((deposit) => (
-          <div className="grid grid-cols-3" key={deposit.address}>
-            <Address address={deposit.address} size={5} />
-
-            <p className="text-center font-medium text-prize-dark-gray">
-              {n2.format(parseFloat(Moralis.Units.FromWei(deposit.balance)))}
-              <span className="text-sm font-normal text-prize-light-gray">
+        {depositors.map((depositor) => (
+          <div
+            className="grid grid-cols-2 space-y-1 sm:grid-cols-3"
+            key={depositor.address}
+          >
+            <Link href={`/players/${depositor.address}`}>
+              <a className="font-semibold text-prize-dark-gray hover:text-prize-dark-gray">
+                {account === depositor.address
+                  ? 'You'
+                  : getEllipsisTxt(depositor.address, 5)}
+              </a>
+            </Link>
+            <p className="text-right font-semibold text-prize-dark-gray sm:text-center">
+              {n2.format(parseFloat(Moralis.Units.FromWei(depositor.balance)))}
+              <span className="text-sm font-medium text-prize-light-gray">
                 {' '}
                 USDT
               </span>
             </p>
-            <Link href={`/players/${deposit.address}`}>
-              <a className="text-right font-medium text-prize-dark-gray hover:text-prize-dark-gray">
-                View
-              </a>
-            </Link>
+            <div className="hidden text-right sm:inline">
+              <Link href={`/players/${depositor.address}`}>
+                <a className="font-medium text-prize-dark-gray hover:text-prize-dark-gray">
+                  View Player
+                </a>
+              </Link>
+            </div>
           </div>
         ))}
       </div>

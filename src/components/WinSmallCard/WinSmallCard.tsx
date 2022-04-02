@@ -2,7 +2,7 @@ import { FunctionComponent, useMemo } from 'react'
 import Image from 'next/image'
 import { useMoralis } from 'react-moralis'
 import { gql, useQuery } from 'urql'
-import { getEllipsisTxt, n2, n4 } from '../../utils/formatters'
+import { getEllipsisTxt, n4 } from '../../utils/formatters'
 import logo from '../../assets/images/prize-1.png'
 import Link from 'next/link'
 

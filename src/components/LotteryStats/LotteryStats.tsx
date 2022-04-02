@@ -63,7 +63,7 @@ const LotteryStats: FunctionComponent = () => {
       </h1>
       <div className="space-y-1">
         <div className="flex justify-between">
-          <h3 className="text-prize-light-gray">Prize-eligible deposits</h3>
+          <h3 className="text-prize-light-gray">Deposits</h3>
           <p className="text-lg font-medium text-prize-dark-gray">
             {n2.format(
               parseFloat(Moralis.Units.FromWei(lotteryInfo.amountDeposited))

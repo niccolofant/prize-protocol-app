@@ -6,7 +6,7 @@ export interface LogoProps {
 }
 
 const Logo: FunctionComponent<LogoProps> = ({ src }) => (
-  <Image src={src} layout="fill" objectFit="contain" />
+  <Image src={src} layout="fill" objectFit="contain" objectPosition={0} />
 )
 
 export default Logo

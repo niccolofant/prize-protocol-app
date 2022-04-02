@@ -3,7 +3,7 @@ import prize1 from '../../assets/images/prize-1.png'
 import prize2 from '../../assets/images/prize-2.png'
 import Image from 'next/image'
 import { useMoralis } from 'react-moralis'
-import { n4 } from '../../utils/formatters'
+import { n2 } from '../../utils/formatters'
 import { FunctionComponent } from 'react'
 import {
   PrizeStatsCardWrapper,
@@ -74,7 +74,7 @@ const PrizeStats: FunctionComponent = () => {
         <div>
           <Image src={prize1} width="200" height="200" />
           <PrizeStatsHighlightText>
-            {n4.format(
+            {n2.format(
               parseFloat(Moralis.Units.FromWei(lotteryInfo.prizePool))
             )}
             <span className="text-lg text-prize-light-gray"> USDT</span>
@@ -85,7 +85,7 @@ const PrizeStats: FunctionComponent = () => {
         <div>
           <Image src={prize2} width="200" height="200" />
           <PrizeStatsHighlightText>
-            {n4.format(parseFloat(Moralis.Units.FromWei(lotteryInfo.reserve)))}
+            {n2.format(parseFloat(Moralis.Units.FromWei(lotteryInfo.reserve)))}
             <span className="text-lg text-prize-light-gray"> USDT</span>
           </PrizeStatsHighlightText>
           <PrizeStatsText>Reserve</PrizeStatsText>

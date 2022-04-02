@@ -18,6 +18,11 @@ import {
   PlayerStatsCardWrapper,
 } from './PlayerStats.style'
 
+export interface PlayerstatsProps {
+  profileLink?: boolean
+  button?: boolean
+}
+
 export interface PlayerInfo {
   player: {
     balance: string
@@ -40,7 +45,10 @@ const openNotification = (err: Error) => {
   })
 }
 
-const PlayerStats: FunctionComponent = () => {
+const PlayerStats: FunctionComponent<PlayerstatsProps> = ({
+  profileLink = true,
+  button = true,
+}) => {
   const [isRedeemLoading, setIsRedeemLoading] = useState(false)
   const [isTransactionPending, setIsTransactionPending] = useState(false)
   const [txHash, setTxHash] = useState('')
@@ -85,7 +93,7 @@ const PlayerStats: FunctionComponent = () => {
           <PlayerStatsCardWrapper>
             <PlayerCardHeaderWrapper>
               <PlayerCardTitle>Dashboard</PlayerCardTitle>
-              {account && (
+              {account && profileLink && (
                 <Link href={`/players/${account}`}>
                   <PlayerCardLink>Profile</PlayerCardLink>
                 </Link>
@@ -102,12 +110,14 @@ const PlayerStats: FunctionComponent = () => {
                         parseFloat(Moralis.Units.FromWei(data.player.balance))
                       )
                     : '0'}
-                  <span className="text-xl"> USDT </span>🎉
+                  <span className="text-xl"> USDT</span>
                 </PlayerCardText>
               </div>
-              <PlayerCardButton onClick={handleRedeemClick}>
-                {isRedeemLoading ? <LoadingOutlined /> : 'Redeem Balance'}
-              </PlayerCardButton>
+              {button && (
+                <PlayerCardButton onClick={handleRedeemClick}>
+                  {isRedeemLoading ? <LoadingOutlined /> : 'Redeem All Balance'}
+                </PlayerCardButton>
+              )}
             </PlayerCardBodyWrapper>
           </PlayerStatsCardWrapper>
           <TransactionPending

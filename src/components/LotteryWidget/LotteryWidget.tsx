@@ -122,8 +122,8 @@ const LotteryWidget: FunctionComponent<LotteryWidgetProps> = ({
             </Link>
           </div>
         </div>
-        <div className="hidden sm:inline-flex">
-          <Image src={diamond} />
+        <div className="relative hidden sm:inline-flex">
+          <Image src={diamond} layout="fill" objectFit="contain" />
         </div>
       </div>
     </div>

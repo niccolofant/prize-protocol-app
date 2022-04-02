@@ -7,9 +7,10 @@ import {
 import Navbar from './Navbar/Navbar'
 import Header from './Header/Header'
 import { FunctionComponent } from 'react'
+import Footer from './Footer/Footer'
 
 export interface LayoutProps {
-  children: FunctionComponent
+  children: FunctionComponent | JSX.Element
 }
 
 const Layout: FunctionComponent<LayoutProps> = ({ children }) => {
@@ -20,6 +21,7 @@ const Layout: FunctionComponent<LayoutProps> = ({ children }) => {
         <InnerHeaderWrapper>
           <Header />
           <BodyWrapper>{children}</BodyWrapper>
+          <Footer />
         </InnerHeaderWrapper>
       </OuterHeaderWrapper>
     </OuterLayoutWrapper>
