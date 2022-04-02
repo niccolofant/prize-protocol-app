@@ -13,7 +13,7 @@ export const PrizeStatsText = tw.p`
 `
 
 export const PrizeStatsHighlightText = tw.p`
-    text-2xl font-semibold text-prize-dark-gray text-center
+    text-2xl font-medium text-prize-dark-gray text-center
 `
 
 export const PrizeStatsContentWrapper = tw.div`

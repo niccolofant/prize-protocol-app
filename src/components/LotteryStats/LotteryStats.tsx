@@ -2,7 +2,7 @@ import { Skeleton } from 'antd'
 import { FunctionComponent, useCallback, useEffect, useState } from 'react'
 import { useMoralis } from 'react-moralis'
 import { gql, useQuery } from 'urql'
-import { n4 } from '../../utils/formatters'
+import { n2, n4 } from '../../utils/formatters'
 import { getCompoundApy } from '../../utils/functions'
 import { Compound, CUSDT, USDT } from '../Images/Images'
 
@@ -35,7 +35,7 @@ const lotteryInfoQuery = gql`
 const LotteryStats: FunctionComponent = () => {
   const [{ data }] = useQuery({ query: lotteryInfoQuery })
   const [compoundApy, setCompoundApy] = useState('')
-  const { Moralis } = useMoralis()
+  const { isWeb3Enabled, Moralis } = useMoralis()
 
   const lotteryInfo: LotteryInfo = {
     ...data?.prizeProtocols[0],
@@ -52,8 +52,8 @@ const LotteryStats: FunctionComponent = () => {
   }, [])
 
   useEffect(() => {
-    fetchCompoundApy()
-  }, [])
+    if (isWeb3Enabled) fetchCompoundApy()
+  }, [isWeb3Enabled])
 
   if (!data) return <Skeleton />
   return (
@@ -65,25 +65,25 @@ const LotteryStats: FunctionComponent = () => {
         <div className="flex justify-between">
           <h3 className="text-prize-light-gray">Prize-eligible deposits</h3>
           <p className="text-lg font-medium text-prize-dark-gray">
-            {Moralis.Units.FromWei(lotteryInfo.amountDeposited)}
+            {n2.format(
+              parseFloat(Moralis.Units.FromWei(lotteryInfo.amountDeposited))
+            )}
             <span className="font-normal text-prize-light-gray"> USDT</span>
           </p>
         </div>
         <div className="flex justify-between">
           <h3 className="text-prize-light-gray">Reserve</h3>
           <p className="text-lg font-medium text-prize-dark-gray">
-            {Moralis.Units.FromWei(lotteryInfo.reserve)}
+            {n2.format(parseFloat(Moralis.Units.FromWei(lotteryInfo.reserve)))}
             <span className="font-normal text-prize-light-gray"> USDT</span>
           </p>
         </div>
         <div className="flex justify-between">
           <h3 className="text-prize-light-gray">Total deposits</h3>
           <p className="text-lg font-medium text-prize-dark-gray">
-            {Moralis.Units.FromWei(
-              (
-                parseInt(lotteryInfo.reserve) +
-                parseInt(lotteryInfo.amountDeposited)
-              ).toString()
+            {n2.format(
+              parseFloat(Moralis.Units.FromWei(lotteryInfo.reserve)) +
+                parseFloat(Moralis.Units.FromWei(lotteryInfo.amountDeposited))
             )}
             <span className="font-normal text-prize-light-gray"> USDT</span>
           </p>
@@ -116,7 +116,7 @@ const LotteryStats: FunctionComponent = () => {
         <div className="flex justify-between">
           <h3 className="text-prize-light-gray">Effective APY </h3>
           <p className="text-lg font-medium text-prize-dark-gray">
-            {n4.format(parseFloat(compoundApy))}
+            {isWeb3Enabled ? n4.format(parseFloat(compoundApy)) : '-'}
             <span className="font-normal text-prize-light-gray">%</span>
           </p>
         </div>

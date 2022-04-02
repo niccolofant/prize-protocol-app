@@ -4,6 +4,7 @@ import { UserOutlined, TrophyOutlined, GithubOutlined } from '@ant-design/icons'
 import Logo from '../../Logo/Logo'
 import WinSmallCard from '../../WinSmallCard/WinSmallCard'
 import logo from '../../../assets/images/logo-white-text.png'
+import AllWins from '../../AllWins/AllWins'
 
 const Navbar = () => {
   const { account } = useMoralis()
@@ -11,7 +12,7 @@ const Navbar = () => {
   return (
     <div className="hidden border-r text-prize-dark-gray shadow-xl md:inline md:w-40 lg:w-60">
       <div className="flex h-screen flex-col space-y-2 p-5">
-        <div className="relative h-24 text-center">
+        <div className="relative h-20">
           <Logo src={logo} />
         </div>
         <nav className="flex-1 py-5">
@@ -34,7 +35,8 @@ const Navbar = () => {
             </li>
           </ul>
         </nav>
-        <div className="hidden lg:inline">
+        <div className="hidden space-y-5 lg:inline">
+          <AllWins />
           <WinSmallCard />
         </div>
         <Link href="https://github.com/ocintnaf/prize-protocol-core">

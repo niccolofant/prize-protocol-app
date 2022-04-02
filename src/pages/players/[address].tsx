@@ -1,7 +1,11 @@
-import { FunctionComponent } from 'react'
+import { Skeleton } from 'antd'
+import { FunctionComponent, useCallback, useMemo, useState } from 'react'
+import { useMoralis } from 'react-moralis'
 import { gql, useQuery } from 'urql'
 import Layout from '../../components/Layout/Layout'
 import PlayerStats from '../../components/PlayerStats/PlayerStats'
+import RedeemModal from '../../components/RedeemModal/RedeemModal'
+import { getEllipsisTxt } from '../../utils/formatters'
 
 export interface PlayerProps {
   query: {
@@ -40,24 +44,47 @@ const playerInfoQuery = gql`
 `
 
 const Player: FunctionComponent<PlayerProps> = ({ query }) => {
+  const [isModalVisible, setIsModalVisible] = useState(false)
+  const { account } = useMoralis()
   const [{ data }] = useQuery<PlayerInfo>({
     query: playerInfoQuery,
     variables: { id: query.address },
   })
 
+  const handleButtonClick = useCallback(() => {
+    setIsModalVisible(true)
+  }, [])
+
   return (
-    <Layout>
-      <div>
-        <div className="space-y-10">
+    <>
+      {data && (
+        <Layout>
           <div>
-            <h1 className="text-2xl font-semibold text-prize-dark-gray md:text-4xl">
-              My Account
-            </h1>
-            <h3 className="text-prize-light-gray">Account overview</h3>
+            <div className="space-y-10">
+              <div>
+                <h1 className="text-2xl font-semibold text-prize-dark-gray md:text-4xl">
+                  {query.address === account
+                    ? 'My Account'
+                    : `Player: ${getEllipsisTxt(query.address, 5)}`}
+                </h1>
+                <h3 className="text-prize-light-gray">Account overview</h3>
+              </div>
+              <button
+                className="rounded-lg bg-prize-red py-2 px-10 text-sm font-semibold text-white shadow-xl sm:text-base"
+                onClick={handleButtonClick}
+              >
+                Deposit
+              </button>
+            </div>
+            <RedeemModal
+              visible={isModalVisible}
+              onClose={() => setIsModalVisible(false)}
+              balance={data.player.balance}
+            />
           </div>
-        </div>
-      </div>
-    </Layout>
+        </Layout>
+      )}
+    </>
   )
 }
 

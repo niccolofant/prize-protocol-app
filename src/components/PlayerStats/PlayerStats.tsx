@@ -80,35 +80,42 @@ const PlayerStats: FunctionComponent = () => {
 
   return (
     <>
-      <PlayerStatsCardWrapper>
-        <PlayerCardHeaderWrapper>
-          <PlayerCardTitle>Dashboard</PlayerCardTitle>
-          {account && (
-            <Link href={`/players/${account}`}>
-              <PlayerCardLink>Profile</PlayerCardLink>
-            </Link>
-          )}
-        </PlayerCardHeaderWrapper>
-        <PlayerCardBodyWrapper>
-          <div className="space-y-1">
-            <h3 className="text-sm text-white sm:text-base">
-              Redeemable balance
-            </h3>
-            <PlayerCardText>
-              {data && data.player
-                ? n2.format(
-                    parseFloat(Moralis.Units.FromWei(data.player.balance))
-                  )
-                : '0'}
-              <span className="text-xl"> USDT </span>🎉
-            </PlayerCardText>
-          </div>
-          <PlayerCardButton onClick={handleRedeemClick}>
-            {isRedeemLoading ? <LoadingOutlined /> : 'Redeem Balance'}
-          </PlayerCardButton>
-        </PlayerCardBodyWrapper>
-      </PlayerStatsCardWrapper>
-      <TransactionPending isVisible={isTransactionPending} txHash={txHash} />
+      {account && (
+        <>
+          <PlayerStatsCardWrapper>
+            <PlayerCardHeaderWrapper>
+              <PlayerCardTitle>Dashboard</PlayerCardTitle>
+              {account && (
+                <Link href={`/players/${account}`}>
+                  <PlayerCardLink>Profile</PlayerCardLink>
+                </Link>
+              )}
+            </PlayerCardHeaderWrapper>
+            <PlayerCardBodyWrapper>
+              <div className="space-y-1">
+                <h3 className="text-sm text-white sm:text-base">
+                  Redeemable balance
+                </h3>
+                <PlayerCardText>
+                  {data && data.player
+                    ? n2.format(
+                        parseFloat(Moralis.Units.FromWei(data.player.balance))
+                      )
+                    : '0'}
+                  <span className="text-xl"> USDT </span>🎉
+                </PlayerCardText>
+              </div>
+              <PlayerCardButton onClick={handleRedeemClick}>
+                {isRedeemLoading ? <LoadingOutlined /> : 'Redeem Balance'}
+              </PlayerCardButton>
+            </PlayerCardBodyWrapper>
+          </PlayerStatsCardWrapper>
+          <TransactionPending
+            isVisible={isTransactionPending}
+            txHash={txHash}
+          />
+        </>
+      )}
     </>
   )
 }
