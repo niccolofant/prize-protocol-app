@@ -5,14 +5,15 @@ import Logo from '../../Logo/Logo'
 import WinSmallCard from '../../WinSmallCard/WinSmallCard'
 import logo from '../../../assets/images/logo-white-text.png'
 import AllWins from '../../AllWins/AllWins'
+import { FunctionComponent } from 'react'
 
-const Navbar = () => {
+const Navbar: FunctionComponent = () => {
   const { account } = useMoralis()
 
   return (
     <div className="hidden border-r text-prize-dark-gray shadow-xl md:inline md:w-40 lg:w-60">
       <div className="flex h-screen flex-col space-y-2 p-5">
-        <div className="relative h-20">
+        <div className="relative flex h-12 justify-end">
           <Logo src={logo} />
         </div>
         <nav className="flex-1 py-5">

@@ -6,12 +6,13 @@ import {
 } from './Layout.style'
 import Navbar from './Navbar/Navbar'
 import Header from './Header/Header'
+import { FunctionComponent } from 'react'
 
 export interface LayoutProps {
-  children: JSX.Element
+  children: FunctionComponent
 }
 
-const Layout = ({ children }: LayoutProps) => {
+const Layout: FunctionComponent<LayoutProps> = ({ children }) => {
   return (
     <OuterLayoutWrapper>
       <Navbar />
