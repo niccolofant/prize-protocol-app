@@ -15,6 +15,11 @@ export interface Deposit {
   amount: string | number
 }
 
+export interface Lottery {
+  id: string
+  startTimestamp: string
+}
+
 export const playerDepositsQuery = gql`
   query ($id: String) {
     player(id: $id) {
@@ -23,6 +28,10 @@ export const playerDepositsQuery = gql`
         timestamp
         amount
       }
+    }
+    lotteries(orderDirection: desc, orderBy: id, first: 1) {
+      id
+      startTimestamp
     }
   }
 `
@@ -36,15 +45,24 @@ const PlayerDeposits: FunctionComponent<PlayerDepositsProps> = ({
     variables: { id: address },
   })
 
-  const deposits: Deposit[] = useMemo(
-    () =>
-      data?.player.deposits.map(({ id, timestamp, amount }: Deposit) => ({
-        id,
-        timestamp,
-        amount: parseFloat(Moralis.Units.FromWei(amount)),
-      })),
-    [data]
-  )
+  const lottery: Lottery = useMemo(() => data?.lotteries[0], [data])
+
+  const deposits: Deposit[] = useMemo(() => {
+    if (data)
+      return [
+        {
+          id: '',
+          timestamp: lottery?.startTimestamp,
+          amount: '0',
+        },
+        ...data.player.deposits.map(({ id, timestamp, amount }: Deposit) => ({
+          id,
+          timestamp,
+          amount: parseFloat(Moralis.Units.FromWei(amount)),
+        })),
+      ]
+    return []
+  }, [data])
 
   if (!data || !deposits) return <Skeleton />
   return (

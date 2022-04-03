@@ -4,6 +4,7 @@ import { useMoralis } from 'react-moralis'
 import { Line, LineChart, ResponsiveContainer, Tooltip } from 'recharts'
 import { gql, useQuery } from 'urql'
 import { CustomTooltip } from '../DepositStats/DepositStats'
+import { Lottery } from '../PlayerDeposits/PlayerDeposits'
 
 export interface PlayerRedeemsProps {
   account: string
@@ -24,6 +25,10 @@ export const playerRedeemsQuery = gql`
         amount
       }
     }
+    lotteries(orderDirection: desc, orderBy: id, first: 1) {
+      id
+      startTimestamp
+    }
   }
 `
 
@@ -36,15 +41,26 @@ const PlayerRedeems: FunctionComponent<PlayerRedeemsProps> = ({
     variables: { id: address },
   })
 
-  const redeems: Redeem[] = useMemo(
-    () =>
-      data?.player.redeems.map(({ id, timestamp, amount }: Redeem) => ({
-        id,
-        timestamp,
-        amount: parseFloat(Moralis.Units.FromWei(amount)),
-      })),
-    [data]
-  )
+  const lottery: Lottery = useMemo(() => data?.lotteries[0], [data])
+
+  console.log(data)
+
+  const redeems: Redeem[] = useMemo(() => {
+    if (data && data.player.redeems.length > 0)
+      return [
+        {
+          id: '',
+          timestamp: lottery?.startTimestamp,
+          amount: '0',
+        },
+        ...data?.player.redeems.map(({ id, timestamp, amount }: Redeem) => ({
+          id,
+          timestamp,
+          amount: parseFloat(Moralis.Units.FromWei(amount)),
+        })),
+      ]
+    return []
+  }, [data])
 
   if (!data || !redeems) return <Skeleton />
   return (

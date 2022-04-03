@@ -54,7 +54,7 @@ const PlayerWins: FunctionComponent<PlayerWinsProps> = ({
         Winnings 🎉
       </h1>
       {wins.length === 0 ? (
-        <p className="my-2 text-prize-light-gray">
+        <p className="my-2 text-sm text-prize-light-gray">
           {address === account ? 'You' : 'The player'} have yet to win. <br />
           {address === account && 'Keep your deposits in the pools to win!'}
         </p>

@@ -14,6 +14,7 @@ export interface Deposit {
 export const depositsQuery = gql`
   query {
     lotteries(orderBy: id, orderDirection: desc, first: 1) {
+      startTimestamp
       amountDeposited
       deposits(orderBy: timestamp) {
         id
@@ -28,15 +29,24 @@ const DepositStats: FunctionComponent = () => {
   const [{ data }] = useQuery({ query: depositsQuery })
   const { Moralis } = useMoralis()
 
-  const deposits: Deposit[] = useMemo(
-    () =>
-      data?.lotteries[0].deposits.map(({ id, timestamp, amount }: Deposit) => ({
-        id,
-        timestamp,
-        amount: parseFloat(Moralis.Units.FromWei(amount)),
-      })),
-    [data]
-  )
+  const deposits: Deposit[] = useMemo(() => {
+    if (data && data.lotteries[0].deposits.length > 0)
+      return [
+        {
+          id: '',
+          timestamp: data.lotteries[0].startTimestamp,
+          amount: '0',
+        },
+        ...data?.lotteries[0].deposits.map(
+          ({ id, timestamp, amount }: Deposit) => ({
+            id,
+            timestamp,
+            amount: parseFloat(Moralis.Units.FromWei(amount)),
+          })
+        ),
+      ]
+    return []
+  }, [data])
 
   if (!data || !deposits) return <Skeleton />
   return (
