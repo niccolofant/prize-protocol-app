@@ -9,6 +9,7 @@ import PlayerStats from '../../components/PlayerStats/PlayerStats'
 import PlayerWins from '../../components/PlayerWins/PlayerWins'
 import RedeemModal from '../../components/RedeemModal/RedeemModal'
 import { getEllipsisTxt } from '../../utils/formatters'
+import Custom404 from '../404'
 
 export interface PlayerProps {
   query: {
@@ -58,9 +59,11 @@ const Player: FunctionComponent<PlayerProps> = ({ query }) => {
     setIsModalVisible(true)
   }, [])
 
+  if (!data || !data.player) return <Custom404 />
+
   return (
     <>
-      {data && (
+      {data && data.player && (
         <Layout>
           <div>
             <div className="space-y-10">

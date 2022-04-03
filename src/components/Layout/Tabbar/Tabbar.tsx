@@ -7,7 +7,7 @@ const Tabbar: FunctionComponent = () => {
   const { account } = useMoralis()
 
   return (
-    <nav className="fixed bottom-0 z-50 w-screen border-t bg-white p-5 dark:border-prize-dark-gray dark:bg-gray-800 md:hidden">
+    <nav className="fixed bottom-0 z-50 w-screen border-t bg-white p-3 dark:border-prize-dark-gray dark:bg-gray-800 md:hidden">
       <ul className="flex justify-around">
         <li>
           <Link href="/">

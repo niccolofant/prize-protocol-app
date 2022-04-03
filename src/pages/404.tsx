@@ -6,11 +6,11 @@ const Custom404: NextPage = () => {
     <div className="flex min-h-screen items-center justify-center">
       <div className="space-y-5 text-center">
         <div className="flex">
-          <h1 className="border-r p-5 text-6xl font-extrabold text-prize-red">
+          <h1 className="border-r p-5 text-4xl font-extrabold text-prize-red md:text-6xl">
             404
           </h1>
           <div className="space-y-2 p-5 text-left">
-            <h2 className="text-6xl font-extrabold tracking-wider text-black">
+            <h2 className="text-2xl font-extrabold tracking-wider text-black sm:text-4xl md:text-6xl">
               Page not found
             </h2>
             <h4 className="text-lg font-light text-prize-light-gray">
