@@ -66,7 +66,7 @@ const deposit: NextPage = () => {
               </div>
             </div>
             <button
-              className="rounded-lg bg-prize-red py-2 px-10 text-sm font-medium text-white shadow-xl sm:text-base"
+              className="rounded-lg bg-prize-red py-2 px-10 text-sm font-semibold text-white shadow-xl sm:text-base"
               onClick={handleButtonClick}
             >
               Deposit

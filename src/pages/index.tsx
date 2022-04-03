@@ -6,7 +6,7 @@ import LotteryWidget from '../components/LotteryWidget/LotteryWidget'
 import PlayerStats from '../components/PlayerStats/PlayerStats'
 
 const Home = () => {
-  const [isLotteryFinshed, setIsLotteryFinished] = useState(false)
+  const [isLotteryFinished, setIsLotteryFinished] = useState(false)
   const { account } = useMoralis()
 
   const handleLotteryEnd = useCallback(() => {
@@ -16,7 +16,7 @@ const Home = () => {
   return (
     <Layout>
       <div className="flex-col space-y-10">
-        {isLotteryFinshed && <LotteryEndBanner />}
+        {isLotteryFinished && <LotteryEndBanner />}
         {account && <PlayerStats account={account} />}
         <div className="space-y-5">
           <div>

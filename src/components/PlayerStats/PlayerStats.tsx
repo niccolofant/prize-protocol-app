@@ -1,5 +1,5 @@
 import { LoadingOutlined } from '@ant-design/icons'
-import { notification } from 'antd'
+import { notification, Skeleton } from 'antd'
 import Link from 'next/link'
 import React, { FunctionComponent, useState } from 'react'
 import { useMoralis, useWeb3Contract } from 'react-moralis'
@@ -88,46 +88,65 @@ const PlayerStats: FunctionComponent<PlayerstatsProps> = ({
     })
   }
 
-  return (
-    <>
-      {account && (
-        <>
-          <PlayerStatsCardWrapper>
-            <PlayerCardHeaderWrapper>
-              <PlayerCardTitle>Dashboard</PlayerCardTitle>
-              {account && profileLink && (
-                <Link href={`/players/${account}`}>
-                  <PlayerCardLink>Profile</PlayerCardLink>
-                </Link>
-              )}
-            </PlayerCardHeaderWrapper>
-            <PlayerCardBodyWrapper>
-              <div className="space-y-1">
-                <h3 className="text-sm text-white sm:text-base">Balance</h3>
-                <PlayerCardText>
-                  {data && data.player
-                    ? n2.format(
-                        parseFloat(Moralis.Units.FromWei(data.player.balance))
-                      )
-                    : '0'}
-                  <span className="text-xl"> USDT</span>
-                </PlayerCardText>
-              </div>
-              {button && (
-                <PlayerCardButton onClick={handleRedeemClick}>
-                  {isRedeemLoading ? <LoadingOutlined /> : 'Redeem All Balance'}
-                </PlayerCardButton>
-              )}
-            </PlayerCardBodyWrapper>
-          </PlayerStatsCardWrapper>
-          <TransactionPending
-            isVisible={isTransactionPending}
-            txHash={txHash}
-          />
-        </>
-      )}
-    </>
-  )
+  if (data && data.player)
+    return (
+      <>
+        <PlayerStatsCardWrapper>
+          <PlayerCardHeaderWrapper>
+            <PlayerCardTitle>Dashboard</PlayerCardTitle>
+            {account && profileLink && (
+              <Link href={`/players/${account}`}>
+                <PlayerCardLink>Profile</PlayerCardLink>
+              </Link>
+            )}
+          </PlayerCardHeaderWrapper>
+          <PlayerCardBodyWrapper>
+            <div className="space-y-1">
+              <h3 className="text-sm text-white sm:text-base">Balance</h3>
+              <PlayerCardText>
+                {data && data.player
+                  ? n2.format(
+                      parseFloat(Moralis.Units.FromWei(data.player.balance))
+                    )
+                  : '0'}
+                <span className="text-xl"> USDT</span>
+              </PlayerCardText>
+            </div>
+            {button && (
+              <PlayerCardButton onClick={handleRedeemClick}>
+                {isRedeemLoading ? <LoadingOutlined /> : 'Redeem All Balance'}
+              </PlayerCardButton>
+            )}
+          </PlayerCardBodyWrapper>
+        </PlayerStatsCardWrapper>
+        <TransactionPending isVisible={isTransactionPending} txHash={txHash} />
+      </>
+    )
+
+  if (data && !data.player)
+    return (
+      <>
+        <PlayerStatsCardWrapper>
+          <div className="grid grid-cols-1 items-center gap-5 sm:grid-cols-2">
+            <div>
+              <h1 className="text-xl font-semibold text-white sm:text-2xl">
+                You haven't joined a lottery yet!
+              </h1>
+              <h2 className="text-sm text-white sm:text-base">
+                Try your luck and get the chance to win big prizes!
+              </h2>
+            </div>
+            <Link href={`/${PROTOCOL_ADDRESS}/deposit`}>
+              <button className="rounded-lg bg-white py-2 px-10 text-sm font-semibold text-prize-dark-gray shadow-xl sm:text-base">
+                Deposit
+              </button>
+            </Link>
+          </div>
+        </PlayerStatsCardWrapper>
+      </>
+    )
+
+  return <Skeleton />
 }
 
 export default PlayerStats

@@ -38,10 +38,12 @@ const Header: FunctionComponent = () => {
           <Logo src={logoLight} />
         </div>
       </div>
-      <div className="flex items-center gap-x-2 sm:gap-x-5">
-        {isAuthenticated && <Chains />}
+      <div className="flex items-center">
+        <div className="mr-2 sm:mr-5">{isAuthenticated && <Chains />}</div>
         <Login />
-        <Switcher />
+        <div className="ml-2 sm:ml-5">
+          <Switcher />
+        </div>
       </div>
     </HeaderWrapper>
   )

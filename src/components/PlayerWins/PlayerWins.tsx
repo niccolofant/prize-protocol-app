@@ -2,7 +2,7 @@ import { Skeleton } from 'antd'
 import { FunctionComponent, useMemo } from 'react'
 import { useMoralis } from 'react-moralis'
 import { gql, useQuery } from 'urql'
-import { getEllipsisTxt, n2 } from '../../utils/formatters'
+import { n4 } from '../../utils/formatters'
 
 export interface PlayerWinsProps {
   account: string
@@ -62,21 +62,21 @@ const PlayerWins: FunctionComponent<PlayerWinsProps> = ({
         wins.map(({ id, timestamp, amount, lottery }: Win) => (
           <div
             key={id}
-            className="space-y-2 rounded-lg border bg-white p-5 shadow-xl dark:border-prize-dark-gray dark:bg-gray-800"
+            className="space-y-2 rounded-lg border bg-white p-5 dark:border-prize-dark-gray dark:bg-gray-800"
           >
             <div className="grid grid-cols-1 items-center gap-2 sm:grid-cols-2">
               <div className="space-y-2">
                 <h2 className="font-medium text-prize-light-gray">
                   Lottery #{lottery.id}
                 </h2>
-                <p className="text-prize-dark-gray dark:text-white">
+                <p className="font-medium text-prize-dark-gray dark:text-white">
                   {new Date(parseInt(timestamp) * 1000).toDateString()}
                 </p>
               </div>
               <div className="sm:text-right">
                 <h2 className="text-sm text-prize-light-gray">Amount</h2>
                 <p className="text-2xl font-medium text-prize-dark-gray dark:text-white">
-                  {n2.format(parseFloat(Moralis.Units.FromWei(amount)))}{' '}
+                  {n4.format(parseFloat(Moralis.Units.FromWei(amount)))}{' '}
                   <span className="text-base font-normal text-prize-light-gray">
                     USDT
                   </span>

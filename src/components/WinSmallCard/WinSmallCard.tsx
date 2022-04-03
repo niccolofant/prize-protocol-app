@@ -42,7 +42,7 @@ const WinSmallCard: FunctionComponent = () => {
 
   if (account && win)
     return (
-      <div className="space-y-2 rounded-lg border p-2 text-center shadow-xl dark:border-prize-dark-gray dark:bg-gray-900">
+      <div className="space-y-2 rounded-lg border bg-white p-2 text-center shadow-xl dark:border-prize-dark-gray dark:bg-gray-800">
         <h1 className="text-sm font-medium text-prize-light-gray">
           Lottery #{win.lottery.id} has ended!
         </h1>

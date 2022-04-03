@@ -129,7 +129,10 @@ const LotteryStats: FunctionComponent = () => {
         </div>
         <div className="flex justify-between">
           <h3 className="text-prize-light-gray">Yield Source</h3>
-          <Compound size="20" />
+          <span className="flex items-center gap-1 text-lg font-medium text-prize-dark-gray dark:text-white">
+            Compound
+            <Compound size="20" />
+          </span>
         </div>
         <div className="flex justify-between">
           <h3 className="text-prize-light-gray">Effective APY </h3>

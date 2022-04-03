@@ -21,28 +21,12 @@ export interface PlayerInfo {
   player: {
     balance: string
   }
-  wins: {
-    id: string
-    timestamp: string
-    winner: {
-      address: string
-    }
-    amount: string
-  }[]
 }
 
 const playerInfoQuery = gql`
   query ($id: String) {
     player(id: $id) {
       balance
-    }
-    wins(orderBy: timestamp, orderDirection: desc, first: 1) {
-      id
-      timestamp
-      winner {
-        address
-      }
-      amount
     }
   }
 `
@@ -59,8 +43,9 @@ const Player: FunctionComponent<PlayerProps> = ({ query }) => {
     setIsModalVisible(true)
   }, [])
 
-  if (!data || !data.player) return <Custom404 />
-
+  if (data && !data.player) {
+    return <Custom404 />
+  }
   return (
     <>
       {data && data.player && (
