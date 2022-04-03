@@ -77,7 +77,7 @@ const LotteryWidget: FunctionComponent<LotteryWidgetProps> = ({
             </div>
 
             <p className="text-sm text-prize-light-gray">
-              Every 10 days at 15:15 UTC the luckiest player will win the prize
+              Every 10 days at 15UTC the luckiest player will win the prize
               pool. You get the chance to win by depositing as little as $1!
             </p>
 
