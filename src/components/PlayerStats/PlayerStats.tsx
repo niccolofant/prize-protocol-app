@@ -103,9 +103,7 @@ const PlayerStats: FunctionComponent<PlayerstatsProps> = ({
             </PlayerCardHeaderWrapper>
             <PlayerCardBodyWrapper>
               <div className="space-y-1">
-                <h3 className="text-sm text-white sm:text-base">
-                  Redeemable balance
-                </h3>
+                <h3 className="text-sm text-white sm:text-base">Balance</h3>
                 <PlayerCardText>
                   {data && data.player
                     ? n2.format(

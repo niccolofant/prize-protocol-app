@@ -6,6 +6,7 @@ import Layout from '../../components/Layout/Layout'
 import PlayerDeposits from '../../components/PlayerDeposits/PlayerDeposits'
 import PlayerRedeems from '../../components/PlayerRedeems/PlayerRedeems'
 import PlayerStats from '../../components/PlayerStats/PlayerStats'
+import PlayerWins from '../../components/PlayerWins/PlayerWins'
 import RedeemModal from '../../components/RedeemModal/RedeemModal'
 import { getEllipsisTxt } from '../../utils/formatters'
 
@@ -92,6 +93,7 @@ const Player: FunctionComponent<PlayerProps> = ({ query }) => {
                 <PlayerDeposits account={query.address} />
                 <PlayerRedeems account={query.address} />
               </div>
+              <PlayerWins account={query.address} />
             </div>
             <RedeemModal
               visible={isModalVisible}

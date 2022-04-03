@@ -4,7 +4,8 @@ import Login from '../../Authentication/Login'
 import Chains from '../../Chains/Chains'
 import Logo from '../../Logo/Logo'
 import { HeaderWrapper } from './Header.style'
-import logo from '../../../assets/images/logo-no-text-white.png'
+import logoLight from '../../../assets/images/logo-no-text-white.png'
+import logoDark from '../../../assets/images/logo-no-text-dark.png'
 import Switcher from '../../Theme/Switcher'
 
 export type Web3ProviderType =
@@ -30,8 +31,11 @@ const Header: FunctionComponent = () => {
   return (
     <HeaderWrapper>
       <div className="md:opacity-0">
-        <div className="relative h-12 w-12">
-          <Logo src={logo} />
+        <div className="relative hidden h-12 w-12 dark:block">
+          <Logo src={logoDark} />
+        </div>
+        <div className="relative block h-12 w-12 dark:hidden">
+          <Logo src={logoLight} />
         </div>
       </div>
       <div className="flex items-center gap-5">

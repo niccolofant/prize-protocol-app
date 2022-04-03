@@ -28,12 +28,12 @@ export const playerDepositsQuery = gql`
 `
 
 const PlayerDeposits: FunctionComponent<PlayerDepositsProps> = ({
-  account,
+  account: address,
 }) => {
-  const { Moralis } = useMoralis()
+  const { account, Moralis } = useMoralis()
   const [{ data }] = useQuery({
     query: playerDepositsQuery,
-    variables: { id: account },
+    variables: { id: address },
   })
 
   const deposits: Deposit[] = useMemo(
@@ -47,7 +47,6 @@ const PlayerDeposits: FunctionComponent<PlayerDepositsProps> = ({
   )
 
   if (!data || !deposits) return <Skeleton />
-
   return (
     <div className="space-y-5 rounded-xl border bg-white p-5 shadow-xl dark:border-prize-dark-gray dark:bg-gray-800 sm:p-10">
       <div>
@@ -55,7 +54,8 @@ const PlayerDeposits: FunctionComponent<PlayerDepositsProps> = ({
           Deposits
         </h1>
         <h3 className="my-2 text-base text-prize-light-gray">
-          Here you can check all your deposits over time!
+          Here you can check all {address === account ? 'your' : "the player's"}{' '}
+          deposits over time!
         </h3>
       </div>
       <div>

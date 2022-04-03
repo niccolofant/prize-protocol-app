@@ -77,14 +77,20 @@ const LotteryStats: FunctionComponent = () => {
             {n2.format(
               parseFloat(Moralis.Units.FromWei(lotteryInfo.amountDeposited))
             )}
-            <span className="font-normal text-prize-light-gray"> USDT</span>
+            <span className="text-sm font-normal text-prize-light-gray">
+              {' '}
+              USDT
+            </span>
           </p>
         </div>
         <div className="flex justify-between">
           <h3 className="text-prize-light-gray">Reserve</h3>
           <p className="text-lg font-medium text-prize-dark-gray dark:text-white">
             {n2.format(parseFloat(Moralis.Units.FromWei(lotteryInfo.reserve)))}
-            <span className="font-normal text-prize-light-gray"> USDT</span>
+            <span className="text-sm font-normal text-prize-light-gray">
+              {' '}
+              USDT
+            </span>
           </p>
         </div>
         <div className="flex justify-between">
@@ -94,13 +100,17 @@ const LotteryStats: FunctionComponent = () => {
               parseFloat(Moralis.Units.FromWei(lotteryInfo.reserve)) +
                 parseFloat(Moralis.Units.FromWei(lotteryInfo.amountDeposited))
             )}
-            <span className="font-normal text-prize-light-gray"> USDT</span>
+            <span className="text-sm font-normal text-prize-light-gray">
+              {' '}
+              USDT
+            </span>
           </p>
         </div>
         <div className="flex justify-between">
           <h3 className="text-prize-light-gray">Reserve Rate</h3>
           <p className="text-lg font-medium text-prize-dark-gray dark:text-white">
-            0<span className="font-normal text-prize-light-gray">%</span>
+            0
+            <span className="text-sm font-normal text-prize-light-gray">%</span>
           </p>
         </div>
         <div className="flex justify-between">
@@ -125,7 +135,7 @@ const LotteryStats: FunctionComponent = () => {
           <h3 className="text-prize-light-gray">Effective APY </h3>
           <p className="text-lg font-medium text-prize-dark-gray dark:text-white">
             {isWeb3Enabled ? n4.format(parseFloat(compoundApy)) : '-'}
-            <span className="font-normal text-prize-light-gray">%</span>
+            <span className="text-sm font-normal text-prize-light-gray">%</span>
           </p>
         </div>
       </div>

@@ -27,11 +27,13 @@ export const playerRedeemsQuery = gql`
   }
 `
 
-const PlayerRedeems: FunctionComponent<PlayerRedeemsProps> = ({ account }) => {
-  const { Moralis } = useMoralis()
+const PlayerRedeems: FunctionComponent<PlayerRedeemsProps> = ({
+  account: address,
+}) => {
+  const { account, Moralis } = useMoralis()
   const [{ data }] = useQuery({
     query: playerRedeemsQuery,
-    variables: { id: account },
+    variables: { id: address },
   })
 
   const redeems: Redeem[] = useMemo(
@@ -45,7 +47,6 @@ const PlayerRedeems: FunctionComponent<PlayerRedeemsProps> = ({ account }) => {
   )
 
   if (!data || !redeems) return <Skeleton />
-
   return (
     <div className="space-y-5 rounded-xl border bg-white p-5 shadow-xl dark:border-prize-dark-gray dark:bg-gray-800 sm:p-10">
       <div>
@@ -53,7 +54,8 @@ const PlayerRedeems: FunctionComponent<PlayerRedeemsProps> = ({ account }) => {
           Redeems
         </h1>
         <h3 className="my-2 text-base text-prize-light-gray">
-          Here you can check all your redeems over time!
+          Here you can check all {address === account ? 'your' : "the player's"}{' '}
+          redeems over time!
         </h3>
       </div>
       <div>
@@ -77,8 +79,9 @@ const PlayerRedeems: FunctionComponent<PlayerRedeemsProps> = ({ account }) => {
             </LineChart>
           </ResponsiveContainer>
         ) : (
-          <p className="my-10 text-center text-prize-light-gray">
-            You have not redeemed any tokens yet.
+          <p className="my-10 text-center text-sm text-prize-light-gray">
+            {address === account ? 'You' : 'The player'} have not redeemed any
+            tokens yet.
           </p>
         )}
       </div>
