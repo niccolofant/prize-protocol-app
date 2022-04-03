@@ -3,12 +3,10 @@ import { gql, useQuery } from 'urql'
 import { useMoralis } from 'react-moralis'
 import { CUSDT, USDT } from '../Images/Images'
 import Link from 'next/link'
-import Image from 'next/image'
 import { n4 } from '../../utils/formatters'
 import Countdown from '../Countdown/Countdown'
-import { FunctionComponent } from 'react'
+import { FunctionComponent, useMemo } from 'react'
 import { getDrawingDate } from '../../utils/functions'
-import diamonds from '../../assets/images/diamonds.png'
 import { PROTOCOL_ADDRESS } from '../../utils/constants'
 
 export interface LotteryWidgetProps {
@@ -47,12 +45,12 @@ const LotteryWidget: FunctionComponent<LotteryWidgetProps> = ({
   onLotteryEnd,
 }) => {
   const { Moralis } = useMoralis()
-  const [{ fetching, data }] = useQuery({ query })
+  const [{ data }] = useQuery({ query })
 
-  const protocolInfo = data?.prizeProtocols[0]
-  const lotteryInfo = protocolInfo?.lotteries[0]
+  const protocolInfo = useMemo(() => data?.prizeProtocols[0], [data])
+  const lotteryInfo = useMemo(() => protocolInfo?.lotteries[0], [protocolInfo])
 
-  if (fetching) return <Skeleton />
+  if (!data) return <Skeleton />
   return (
     <Link href={`/${PROTOCOL_ADDRESS}/deposit`}>
       <div className="cursor-pointer rounded-xl border bg-white p-5 shadow-xl dark:border-prize-dark-gray dark:bg-gray-800 md:p-10">

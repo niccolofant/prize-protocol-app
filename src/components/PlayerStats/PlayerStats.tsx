@@ -49,7 +49,7 @@ const openNotification = (err: Error) => {
 const PlayerStats: FunctionComponent<PlayerstatsProps> = ({
   profileLink = true,
   button = true,
-  account,
+  account: address,
 }) => {
   const [isRedeemLoading, setIsRedeemLoading] = useState(false)
   const [isTransactionPending, setIsTransactionPending] = useState(false)
@@ -57,7 +57,7 @@ const PlayerStats: FunctionComponent<PlayerstatsProps> = ({
   const { Moralis } = useMoralis()
   const [{ data }] = useQuery<PlayerInfo>({
     query: playerInfoQuery,
-    variables: { id: account },
+    variables: { id: address },
   })
 
   const { runContractFunction: redeem } = useWeb3Contract({
@@ -94,8 +94,8 @@ const PlayerStats: FunctionComponent<PlayerstatsProps> = ({
         <PlayerStatsCardWrapper>
           <PlayerCardHeaderWrapper>
             <PlayerCardTitle>Dashboard</PlayerCardTitle>
-            {account && profileLink && (
-              <Link href={`/players/${account}`}>
+            {address && profileLink && (
+              <Link href={`/players/${address}`}>
                 <PlayerCardLink>Profile</PlayerCardLink>
               </Link>
             )}

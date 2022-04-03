@@ -17,7 +17,7 @@ const Home = () => {
     <Layout>
       <div className="flex-col space-y-10">
         {isLotteryFinished && <LotteryEndBanner />}
-        {account && <PlayerStats account={account} />}
+        <PlayerStats account={account || ''} />
         <div className="space-y-5">
           <div>
             <h1 className="text-2xl font-semibold text-prize-dark-gray dark:text-white md:text-4xl">
