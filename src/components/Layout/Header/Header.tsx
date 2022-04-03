@@ -38,7 +38,7 @@ const Header: FunctionComponent = () => {
           <Logo src={logoLight} />
         </div>
       </div>
-      <div className="flex items-center gap-5">
+      <div className="flex items-center space-x-2 sm:space-x-5">
         {isAuthenticated && <Chains />}
         <Login />
         <Switcher />

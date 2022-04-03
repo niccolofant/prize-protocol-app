@@ -45,7 +45,7 @@ const Chains: FunctionComponent = () => {
           className={`rounded-lg p-2 text-sm font-medium text-prize-dark-gray hover:bg-gray-100 dark:hover:bg-prize-dark-gray
           ${chainId === key ? 'bg-slate-100 dark:bg-prize-dark-gray' : null}`}
         >
-          <div className="flex items-center gap-2">
+          <div className="flex items-center space-x-3">
             {icon}
             <div className="flex w-28 flex-grow items-center justify-between tracking-wider text-prize-light-gray">
               {value}
@@ -59,10 +59,7 @@ const Chains: FunctionComponent = () => {
 
   return (
     <Dropdown overlay={menu} trigger={['click']}>
-      <button
-        className="flex items-center
-          font-gilroy text-sm font-medium text-prize-dark-gray"
-      >
+      <button className="flex items-center font-gilroy text-sm font-medium text-prize-dark-gray">
         {chainId !== '0x4' ? (
           <span className="flex items-center space-x-1 rounded-lg border bg-white p-2 text-prize-red dark:border-prize-dark-gray dark:bg-gray-800">
             <VscError />
