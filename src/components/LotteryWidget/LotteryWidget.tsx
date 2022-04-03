@@ -3,7 +3,7 @@ import { gql, useQuery } from 'urql'
 import { useMoralis } from 'react-moralis'
 import { CUSDT, USDT } from '../Images/Images'
 import Link from 'next/link'
-import { n4 } from '../../utils/formatters'
+import { n2 } from '../../utils/formatters'
 import Countdown from '../Countdown/Countdown'
 import { FunctionComponent, useMemo } from 'react'
 import { getDrawingDate } from '../../utils/functions'
@@ -86,7 +86,7 @@ const LotteryWidget: FunctionComponent<LotteryWidgetProps> = ({
                 </h3>
                 <p className="flex items-center text-2xl font-medium text-prize-dark-gray dark:text-white">
                   $
-                  {n4.format(
+                  {n2.format(
                     parseFloat(Moralis.Units.FromWei(lotteryInfo.prizePool))
                   )}
                 </p>

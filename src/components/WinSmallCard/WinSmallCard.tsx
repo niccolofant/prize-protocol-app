@@ -2,9 +2,10 @@ import { FunctionComponent, useMemo } from 'react'
 import Image from 'next/image'
 import { useMoralis } from 'react-moralis'
 import { gql, useQuery } from 'urql'
-import { getEllipsisTxt, n4 } from '../../utils/formatters'
+import { getEllipsisTxt, n2 } from '../../utils/formatters'
 import logo from '../../assets/images/prize-1.png'
 import Link from 'next/link'
+import { Skeleton } from 'antd'
 
 export interface Win {
   id: string
@@ -40,7 +41,8 @@ const WinSmallCard: FunctionComponent = () => {
 
   const win: Win = useMemo(() => data?.wins[0], [data])
 
-  if (account && win)
+  if (!win) return <Skeleton />
+  if (win)
     return (
       <div className="space-y-2 rounded-lg border bg-white p-2 text-center shadow-xl dark:border-prize-dark-gray dark:bg-gray-800">
         <h1 className="text-sm font-medium text-prize-light-gray">
@@ -53,7 +55,7 @@ const WinSmallCard: FunctionComponent = () => {
               ? 'You '
               : `${getEllipsisTxt(win.winner.address, 4)} `}
             <span className="font-medium text-prize-light-gray">won </span>
-            {`$${n4.format(parseFloat(Moralis.Units.FromWei(win.amount)))}`} 🎉
+            {`$${n2.format(parseFloat(Moralis.Units.FromWei(win.amount)))}`} 🎉
           </h2>
           {win.winner.address === account && (
             <Link href={`/players/${account}`}>

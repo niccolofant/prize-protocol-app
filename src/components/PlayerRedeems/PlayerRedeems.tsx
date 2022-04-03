@@ -43,8 +43,6 @@ const PlayerRedeems: FunctionComponent<PlayerRedeemsProps> = ({
 
   const lottery: Lottery = useMemo(() => data?.lotteries[0], [data])
 
-  console.log(data)
-
   const redeems: Redeem[] = useMemo(() => {
     if (data && data.player.redeems.length > 0)
       return [
