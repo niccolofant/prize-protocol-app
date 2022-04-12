@@ -41,7 +41,6 @@ const Navbar: FunctionComponent = () => {
           </ul>
         </nav>
         <div className="hidden space-y-5 lg:inline">
-          <AllWins />
           <WinSmallCard />
         </div>
         <Link href="https://github.com/ocintnaf/prize-protocol-core">
